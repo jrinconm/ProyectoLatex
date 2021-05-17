@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.5.10)  10 MAY 2021 16:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.5.10)  17 MAY 2021 09:10
 entering extended mode
 **./TFGJrincon.tex.tex
 (TFGJrincon.tex.tex
@@ -57,26 +57,26 @@ Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
 Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
 (babel)             (\language73). Reported on input line 108.
 )
+(C:\Users\jrincon\AppData\Local\Programs\MiKTeX\tex/latex/babel-catalan\catalan
+.ldf
+Language: catalan 2005/03/29 v2.2p Catalan support from the babel system
+Package babel Info: Making " an active character on input line 91.
+\leftllkern=\dimen140
+\rightllkern=\dimen141
+\raiselldim=\dimen142
+)
 (C:\Users\jrincon\AppData\Local\Programs\MiKTeX\tex/latex/babel-spanish\spanish
 .ldf
 Language: spanish.ldf 2016/03/03 v5.0p Spanish support from the babel system
 \es@quottoks=\toks15
 \es@quotdepth=\count190
-Package babel Info: Making " an active character on input line 561.
 Package babel Info: Making . an active character on input line 662.
 Package babel Info: Making < an active character on input line 707.
 Package babel Info: Making > an active character on input line 707.
 )
-(C:\Users\jrincon\AppData\Local\Programs\MiKTeX\tex/latex/babel-catalan\catalan
+(C:\Users\jrincon\AppData\Local\Programs\MiKTeX\tex/latex/babel-spanish\spanish
 .ldf
-Language: catalan 2005/03/29 v2.2p Catalan support from the babel system
-\leftllkern=\dimen140
-\rightllkern=\dimen141
-\raiselldim=\dimen142
-)
-(C:\Users\jrincon\AppData\Local\Programs\MiKTeX\tex/latex/babel-catalan\catalan
-.ldf
-Language: catalan 2005/03/29 v2.2p Catalan support from the babel system
+Language: spanish.ldf 2016/03/03 v5.0p Spanish support from the babel system
 ))
 (C:\Users\jrincon\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\mathpazo.sty
 Package: mathpazo 2020/03/25 PSNFSS-v9.3 Palatino w/ Pazo Math (D.Puga, WaS) 
@@ -472,8 +472,16 @@ File: l3backend-pdftex.def 2021-05-07 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count290
 \l__pdf_internal_box=\box50
 ) (TFGJrincon.tex.aux
+LaTeX Info: Redefining \. on input line 25.
+LaTeX Info: Redefining \% on input line 25.
+LaTeX Info: Redefining \. on input line 27.
+LaTeX Info: Redefining \% on input line 27.
 LaTeX Info: Redefining \. on input line 28.
 LaTeX Info: Redefining \% on input line 28.
+LaTeX Info: Redefining \. on input line 29.
+LaTeX Info: Redefining \% on input line 29.
+LaTeX Info: Redefining \. on input line 31.
+LaTeX Info: Redefining \% on input line 31.
 )
 \openout1 = `TFGJrincon.tex.aux'.
 
@@ -495,6 +503,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 67.
 LaTeX Font Info:    ... okay on input line 67.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 67.
 LaTeX Font Info:    ... okay on input line 67.
+LaTeX Info: Redefining \. on input line 67.
+LaTeX Info: Redefining \% on input line 67.
 LaTeX Info: Redefining \l on input line 67.
 LaTeX Info: Redefining \L on input line 67.
 \big@size=\dimen175
@@ -653,14 +663,28 @@ LaTeX Font Info:    Trying to load font information for T1+cmss on input line 7
 (C:\Users\jrincon\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmss.fd
 File: t1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
+LaTeX Info: Redefining \. on input line 75.
+LaTeX Info: Redefining \% on input line 75.
 LaTeX Info: Redefining \. on input line 76.
 LaTeX Info: Redefining \% on input line 76.
+LaTeX Info: Redefining \. on input line 78.
+LaTeX Info: Redefining \% on input line 78.
+LaTeX Info: Redefining \. on input line 81.
+LaTeX Info: Redefining \% on input line 81.
 
 [3] [4
 
 ] (TFGJrincon.tex.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+LaTeX Info: Redefining \. on input line 3.
+LaTeX Info: Redefining \% on input line 3.
 LaTeX Info: Redefining \. on input line 4.
 LaTeX Info: Redefining \% on input line 4.
+LaTeX Info: Redefining \. on input line 5.
+LaTeX Info: Redefining \% on input line 5.
+LaTeX Info: Redefining \. on input line 7.
+LaTeX Info: Redefining \% on input line 7.
 )
 \tf@toc=\write4
 \openout4 = `TFGJrincon.tex.toc'.
@@ -668,15 +692,31 @@ LaTeX Info: Redefining \% on input line 4.
  [5] [6
 
 ] (TFGJrincon.tex.lof
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+LaTeX Info: Redefining \. on input line 3.
+LaTeX Info: Redefining \% on input line 3.
 LaTeX Info: Redefining \. on input line 4.
 LaTeX Info: Redefining \% on input line 4.
+LaTeX Info: Redefining \. on input line 5.
+LaTeX Info: Redefining \% on input line 5.
+LaTeX Info: Redefining \. on input line 7.
+LaTeX Info: Redefining \% on input line 7.
 )
 \tf@lof=\write5
 \openout5 = `TFGJrincon.tex.lof'.
 
  (TFGJrincon.tex.lot
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+LaTeX Info: Redefining \. on input line 3.
+LaTeX Info: Redefining \% on input line 3.
 LaTeX Info: Redefining \. on input line 4.
 LaTeX Info: Redefining \% on input line 4.
+LaTeX Info: Redefining \. on input line 5.
+LaTeX Info: Redefining \% on input line 5.
+LaTeX Info: Redefining \. on input line 7.
+LaTeX Info: Redefining \% on input line 7.
 )
 \tf@lot=\write6
 \openout6 = `TFGJrincon.tex.lot'.
@@ -685,21 +725,21 @@ LaTeX Info: Redefining \% on input line 4.
 [7] [8
 
 ]
-Cap\'{\i }tol 1.
+Cap\'{\i }tulo 1.
 [1
 
 ] [2
 
 ]
-Cap\'{\i }tol 2.
+Cap\'{\i }tulo 2.
 [3] [4
 
 ]
-Cap\'{\i }tol 3.
+Cap\'{\i }tulo 3.
 [5] [6
 
 ]
-Cap\'{\i }tol 4.
+Cap\'{\i }tulo 4.
 [7] [8
 
 ]
@@ -712,28 +752,36 @@ File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 [9] [10
 
 ]
-Ap\`endix A.
+Ap\'{e}ndice A.
 [11
 
 ] [12
 
 ]
-Ap\`endix B.
+Ap\'{e}ndice B.
 [13] (TFGJrincon.tex.aux
+LaTeX Info: Redefining \. on input line 25.
+LaTeX Info: Redefining \% on input line 25.
+LaTeX Info: Redefining \. on input line 27.
+LaTeX Info: Redefining \% on input line 27.
 LaTeX Info: Redefining \. on input line 28.
 LaTeX Info: Redefining \% on input line 28.
+LaTeX Info: Redefining \. on input line 29.
+LaTeX Info: Redefining \% on input line 29.
+LaTeX Info: Redefining \. on input line 31.
+LaTeX Info: Redefining \% on input line 31.
 )
 Package rerunfilecheck Info: File `TFGJrincon.tex.out' has not changed.
-(rerunfilecheck)             Checksum: EFD5F812F8491394D0F020524DA95760;2315.
+(rerunfilecheck)             Checksum: B6E00EFE9DA2ECC548A3F75B23303D71;2400.
  ) 
 Here is how much of TeX's memory you used:
- 14466 strings out of 479173
- 221412 string characters out of 2853213
- 613306 words of memory out of 3000000
- 31792 multiletter control sequences out of 15000+600000
- 437033 words of font info for 86 fonts, out of 8000000 for 9000
+ 14472 strings out of 479173
+ 220815 string characters out of 2853213
+ 612158 words of memory out of 3000000
+ 31795 multiletter control sequences out of 15000+600000
+ 441311 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,77p,258b,595s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 75i,12n,77p,270b,816s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\jrincon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ec
 tt1095.pk> <C:\Users\jrincon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/d
 pi600\ecsx1440.pk> <C:\Users\jrincon\AppData\Local\MiKTeX\fonts/pk/ljfour/jknap
@@ -743,9 +791,9 @@ eX/fonts/enc/dvips/base/8r.enc}<C:/Users/jrincon/AppData/Local/Programs/MiKTeX/
 fonts/type1/urw/palatino/uplb8a.pfb><C:/Users/jrincon/AppData/Local/Programs/Mi
 KTeX/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/jrincon/AppData/Local/Progra
 ms/MiKTeX/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on TFGJrincon.tex.pdf (21 pages, 177412 bytes).
+Output written on TFGJrincon.tex.pdf (21 pages, 178252 bytes).
 PDF statistics:
- 331 PDF objects out of 1000 (max. 8388607)
+ 333 PDF objects out of 1000 (max. 8388607)
  43 named destinations out of 1000 (max. 500000)
  152 words of extra memory for PDF output out of 10000 (max. 10000000)
 
