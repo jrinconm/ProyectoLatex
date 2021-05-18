@@ -89,8 +89,8 @@
 \newcommand{\tutor}[1]{\newcommand{\t@tor}{#1}}
 \newcommand{\curs}[1]{\newcommand{\c@rs}{#1}}
 
-\newcommand{\titulacioname}{Grau en Enginyeria Inform\`atica}
-\newcommand{\tfgname}{Treball fi de grau}
+\newcommand{\titulacioname}{Periodo Marzo/Junio}
+\newcommand{\tfgname}{Gestor de turnos de teletrabajo}
 
 \newcommand{\authorname}{Autor}
 \newcommand{\tutorname}{Tutor}
@@ -316,18 +316,20 @@
 \begin{titlepage}
 \AddToShipoutPicture*{\AtPageUpperLeft{%
     % Marges: dalt=esquerra=dreta=2cm 
-    \raisebox{-4cm}{\hspace{2cm}\includegraphics[height=2cm]{logo-upv}% grandÃ ria 116mmx37mm escalada a 62.7mmx20mm
+    \raisebox{-4cm}{\hspace{2cm}\includegraphics[height=2cm]{logo_ceedcv}% grandï¿½ ria 116mmx37mm escalada a 62.7mmx20mm
     \hspace{5.54cm}% 21cm-(2+6.27+5.19+2)cm
-                    \includegraphics[height=2cm]{logo-etsinf}% grandÃ ria 109mmx42mm escalada a 51.9mmx20mm
+                    \includegraphics[height=2cm]{logo_ceedcv}% grandï¿½ ria 109mmx42mm escalada a 51.9mmx20mm
                     }}}
 \AddToShipoutPicture*{\includegraphics[width=21cm,height=12.89cm]{baseportada}}
 \centering
 \vspace*{2cm}
 \begin{color}{grisfosc}
 \large
-Escola T\`ecnica Superior d'Enginyeria Inform\`atica
+Desenrotllament d'aplicacions web
 
-Universitat Polit\`ecnica de Val\`encia
+Centre Espec\Â´ific d'Educaci\Â´o a Dist\`ancia de la Comunitat Valenciana
+
+
 \end{color}
 \vspace{\stretch{1}}
 
