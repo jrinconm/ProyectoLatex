@@ -119,8 +119,8 @@
      
 
 \addto\captionsspanish{%
-     \renewcommand{\titulacioname}{Grado en Ingenier\'\i a Inform\'atica}
-     \renewcommand{\tfgname}{Trabajo fin de grado}
+     \renewcommand{\titulacioname}{Desarrollo de Aplicaciones Web}
+     \renewcommand{\tfgname}{Proyecto fin de ciclo}
      \renewcommand{\authorname}{Autor}
      \renewcommand{\tutorname}{Tutor}
      \renewcommand{\coursename}{Curso}
@@ -327,7 +327,7 @@
 \large
 Desenrotllament d'aplicacions web
 
-Centre Espec\´ific d'Educaci\´o a Dist\`ancia de la Comunitat Valenciana
+Centre Espec\'ific d'Educaci\'o a Dist\`ancia de la Comunitat Valenciana
 
 
 \end{color}
