@@ -58,7 +58,7 @@
 
 \keywords{teletreball, organització, torn, node, quasar, sequelize, mariadb, docker, express, rest api} % Paraules clau 
          {teletrabajo, organizacion, turno, node, quasar, sequelize, mariadb, docker, express, rest api}              % Palabras clave
-         {telework,  setup, turn, node, quasar, sequelize, mariadb, docker, express, rest api}        % Key words
+         {telework,  setup, turn, shift, node, quasar, sequelize, mariadb, docker, express, rest api}        % Key words
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                              INICI DEL DOCUMENT                             %
@@ -71,18 +71,28 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{abstract}
-????
+Gestor de torns de teletreball és una eina per a organitzar els torns en els quals el personal dels diferents departaments d'una empresa s'alternen per a teletreballar.
+Per al client bàsic, s'ofereix un calendari on pot confirmar els torns que li són assignats o sol·licitar canvi a un altre company.
+També té visibilitat sobre els torns de la seua pròpia àrea per a poder sol·licitar el canvi.
+A mes pot obtindre una còpia del calendari en pdf per a imprimir-la posteriorment o emmagatzemar-la.
+El gestor del departament pot obtindre un informe amb gràfics del personal que està al seu càrrec.
+L'administrador de l'aplicació té una interfície per a poder modificar els valors de l'aplicació.
 \end{abstract}
 \begin{abstract}[spanish]
 Gestor de turnos de teletrabajo es una herramienta para organizar los turnos en los que el personal de los distintos departamentos de una empresa se turnan para teletrabajar.
-Para el cliente básico, se ofrece un calendario donde puede con firmar los turnos que le son asignados o solicitar cambio a otro compañero.
+Para el cliente básico, se ofrece un calendario donde puede confirmar los turnos que le son asignados o solicitar cambio a otro compañero.
 También tiene visibilidad sobre los turnos de su propia area para poder solicitar el cambio.
-También puede obtener una copia del calendario en pdf para imprimirla posteriormente o almacenarla.
+Ademas puede obtener una copia del calendario en pdf para imprimirla posteriormente o almacenarla.
 El gestor del departamento puede obtener un informe con graficos del personal que está a su cargo.
 El administrador de la aplicación tiene un interfaz para poder modificar los valores de la aplicación.
 \end{abstract}
 \begin{abstract}[english]
-????
+Telework Shift Manager is a tool to organize shifts in which the personnel of the different departments of a company takes turns to telework.
+For the basic client, a calendar is offered where you can confirm the shifts that are assigned to you or request a change from another colleague.
+You also have visibility on the shifts in your area to be able to request the change.
+You can also get a copy of the calendar in pdf to print it later or store it.
+The department manager can obtain a report with graphs of the personnel who are in charge.
+The application manager has an interface to be able to modify the application settings.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -109,17 +119,6 @@ También es posible que no se distribuyan de forma equitativa los turnos, pudien
 
 El objetivo de este proyecto es crear una aplicación que de forma rápida permita configurar las jornadas de teletrabajo, y dotar a los responsables de los mismos estadísticas del personal a su cargo.
 
-\section{Estructura de la mem\`oria}
-
-En el capítulo 1 presento las principales herramientas y mejorar logradas en el software.
-En el capítulo 2 debería hacer el estudio de mercado, dafo, recursos, etc.
-En el capítulo 3 los requisitos.
-En el capítulo 4 los diagramas.
-En el capítulo 5 la codificación, el por qué , etc.
-En el capítulo 6 el despligue.
-En el capítulo 7 las herramientas de apoyo.
-En el capítulo 8 las conclusiones
-
 
 %\section{Notes bibliografiques} %%%%% Opcional
 
@@ -134,18 +133,33 @@ En el capítulo 8 las conclusiones
 El ORM (object-relational mapping) Sequelize, desde su versión 4, permite el uso de clases ES6, por lo que se ha usado una clase básica con los parametros comunes, eliminando codigo duplicado.
 Se ha integrado CI/CD en la creación de esta documentación, a través de github actions, compilando el documento al realizar un push en el respositorio.
 El uso de Sonarqube ha limitado el código duplicado, llegando a ser inexistente en la parte del frontend.
-
-\section{?? ???? ???? ? ?? ??}
-
-????? ????????????? ????????????? ????????????? ????????????? ?????????????
+Quasar es una herramienta basada en vue que permite crear itnerfaces gráficos de forma sencilla.
+Docker es una virtualización muy ligera que combinada con docker-compose permite crear el despliegue de la aplicación en multiples sistemas de forma muy sencilla.
 
 \chapter{Estudio de viabilidad. Método DAFO}
 
-????? ????????????? ????????????? ????????????? ????????????? ?????????????
+Esta aplicación estaría englobada dentro de las denominadas aplicaciones de productividad, con las aplicaciones de organización de horarios, calendarios y citas.
 
 \section{Estudio de mercado}
 
-????? ????????????? ????????????? ????????????? ????????????? ?????????????
+Actualmente, si se realiza una búsqueda de aplicaciones de turnos, e incluimos en la búsqueda teletrabajo como palabra necesaria, no aparece ninguna aplicación. 
+Sí hay aplicaciones de turnos, en los que se busca un control horario, pero actualmente prácticamente no hay ninguna aplicación centrada en el teletrabajo, en los turnos presenciales y no presenciales.
+Hay controles horarios, que han aprovechado para incluir el teletrabajo dentro de la reclama de control horario, pero no gestionan los turnos.
+Al ser una herramienta con un nicho tan específico, existe la posiblidad en la que el uso del teletrabajo vuelva a ser puramente testimonial, en la que la existencia de esta herramienta deje de ser necesaria.
+\section{Análisis DAFO}
+
+\begin{tabular}{| c | c |}
+\hline
+Debilidades & Amenazas \\ \hline
+Aplicación desconocida & Aparición de aplicaciones dedicadas \\
+Programador con poco recorrido & Ampliación de aplicaciones actuales con esta opción \\
+Uso puntual y específico & Desminución del teletrabajo\\
+Falta de interés en la gestión de los turnos &  \\ \hline   
+Fortalezas & Oportunidades \\ \hline
+Posibilidad de personalización de forma sencilla & Mercado prácticamente exclusivo \\
+Sencillez de uso &  Facil de integrar en otras webs\\
+Despliegue sencillo & El teletrabajo está de moda\\ 
+\end{tabular}
 
 \section{Planificación temporal}
 
