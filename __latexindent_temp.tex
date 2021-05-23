@@ -108,7 +108,9 @@ The application manager has an interface to be able to modify the application se
 \chapter{Introducci\'o}
 
 Al incorporar el teletrabajo en nuestra forma de vida, muchas empresas que no tenían ningún sistema de turnos porque no les hacía falta, han visto que no disponen de herramientas para coordinar los diversos grupos de trabajo.
-Muchas optan por usar el calendario del correo o  una hoja excel, en ocasiones generando descoordinación al no tener un sistema fácil donde poder marcar y modificar los días en los que el personal debe acudir de forma presencial.
+
+Muchas de estas empresas optan por usar el calendario del correo o  una hoja excel, en ocasiones generando descoordinación al no tener un sistema fácil donde poder marcar y modificar los días en los que el personal debe acudir de forma presencial.
+
 También es posible que no se distribuyan de forma equitativa los turnos, pudiendo generar malestar entre los compañeros.
 
 % \section{Motivaci\'o}
@@ -118,6 +120,8 @@ También es posible que no se distribuyan de forma equitativa los turnos, pudien
 \section{Objectius}
 
 El objetivo de este proyecto es crear una aplicación que de forma rápida permita configurar las jornadas de teletrabajo, y dotar a los responsables de los mismos estadísticas del personal a su cargo.
+
+Que puedan consultar de forma rápida si al día siguiente es turno presencial o no, y guardarse una copia de los turnos del mes para poder consultarlo posteriormente. 
 
 
 %\section{Notes bibliografiques} %%%%% Opcional
@@ -131,10 +135,16 @@ El objetivo de este proyecto es crear una aplicación que de forma rápida permi
 \chapter{Estado del arte}
 
 El ORM (object-relational mapping) Sequelize, desde su versión 4, permite el uso de clases ES6, por lo que se ha usado una clase básica con los parametros comunes, eliminando codigo duplicado.
+
 Se ha integrado CI/CD en la creación de esta documentación, a través de github actions, compilando el documento al realizar un push en el respositorio.
+
 El uso de Sonarqube ha limitado el código duplicado, llegando a ser inexistente en la parte del frontend.
+
 Quasar es una herramienta basada en vue que permite crear itnerfaces gráficos de forma sencilla.
+
 Docker es una virtualización muy ligera que combinada con docker-compose permite crear el despliegue de la aplicación en multiples sistemas de forma muy sencilla.
+
+Google cloud es uno de los servidores donde podemos desplegarlo, viendo las posibilidades con aplicación móvil y sin ella.
 
 \chapter{Estudio de viabilidad. Método DAFO}
 
