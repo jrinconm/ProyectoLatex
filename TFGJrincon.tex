@@ -345,7 +345,7 @@ Se ha realizado un diagrama de casos de uso, donde mostramos una vez logueado el
 A partir de analisis de los requisitos, obtenemos el siguiente diseño conceptual E/R.
 
 \begin{figure}[h!] % [h!]
-   \includegraphics[width=\linewidth]{img/EntidadRelacion.png}
+   \includegraphics[scale=0.5]{img/EntidadRelacion.png}
    \caption{Diagrama E/R}
    \label{fig:diagramaer}
  \end{figure}
@@ -365,7 +365,7 @@ En el diseño físico he incluido funcionalidad de sequelize, que permite automa
 También he añadido como clave primaria un id en todas las tablas, para trabajar de forma más cómoda en la API.
 Por último, he aprovechado también la autocreación de relaciones entre tablas, para que nombrase automaticamente las relaciones.
 \begin{figure}[h!] % [h!]
-   \includegraphics[width=\linewidth]{img/EsquemaBBDD.png}
+   \includegraphics[[scale=0.75]]{img/EsquemaBBDD.png}
    \caption{Diagrama mysql}
    \label{fig:diagramaMysql}
  \end{figure}
@@ -384,54 +384,28 @@ Pendiente
 
 \section{Mockups}
 
-\begin{figure}[h!] % [h!]
-   \includegraphics[width=\linewidth]{img/Vista_Calendario_PC.png}
-   \caption{Mockup vista calendario pc}
+\begin{figure}[ht!] % [h!]
+   \includegraphics[width=0.48\textwidth]{img/Vista_Calendario_PC.png}
+   \includegraphics[width=0.48\textwidth]{img/Vista_Opciones_PC.png}
+   \caption{Mockup vista calendario y opciones version pc}
    \label{fig:calendarioPC}
  \end{figure}
 
- \begin{figure}[h!] % [h!]
-   \includegraphics[width=\linewidth]{img/Vista_Opciones_PC.png}
-   \caption{Mockup vista opciones pc}
-   \label{fig:opcionesPC}
- \end{figure}
-
-
- \begin{figure}[h!] % [h!]
-   \includegraphics[width=\linewidth]{img/Vista_Informes_PC.png}
-   \caption{Mockup vista informes pc}
+ \begin{figure}[ht!] % [h!]
+   \includegraphics[width=0.48\textwidth]{img/Vista_Informes_PC.png}
+   \includegraphics[width=0.48\textwidth]{img/Vista_Administracion_PC.png}
+   \caption{Mockup vista informes y administración version pc}
    \label{fig:informesPC}
  \end{figure}
 
- \begin{figure}[h!] % [h!]
-  \includegraphics[width=0.32\textwidth]{img/Vista_Calendario_MVL.png}
-  \caption{Mockup vista calendario movil}
-  \label{fig:calendarioMVL}
+ \begin{figure}[ht!] % [h!]
+  \includegraphics[width=0.24\textwidth]{img/Vista_Calendario_MVL.png}
+  \includegraphics[width=0.24\textwidth]{img/Vista_Opciones_MVL.png}
+  \includegraphics[width=0.24\textwidth]{img/Vista_Informes_MVL.png}
+  \includegraphics[width=0.24\textwidth]{img/Vista_Administracion_MVL.png}
+  \caption{Mockup movil}
+  \label{fig:VistaMVL}
 \end{figure}
-
- \begin{figure}[h!] % [h!]
-   \includegraphics[width=0.32\textwidth]{img/Vista_Opciones_MVL.png}
-   \caption{Mockup vista opciones movil}
-   \label{fig:opcionesMVL}
- \end{figure}
-
- \begin{figure}[h!] % [h!]
-   \includegraphics[width=0.32\textwidth]{img/Vista_Informes_MVL.png}
-   \caption{Mockup vista informes movil}
-   \label{fig:informesMVL}
- \end{figure}
-
- \begin{figure}[h!] % [h!]
-   \includegraphics[width=0.64\textwidth]{img/Vista_Administracion_PC.png}
-   \caption{Mockup vista administracion pc}
-   \label{fig:administracionPC}
- \end{figure}
-
- \begin{figure}[h!] % [h!]
-   \includegraphics[width=0.32\textwidth]{img/Vista_Administracion_MVL.png}
-   \caption{Mockup vista administracion movil}
-   \label{fig:administracionMVL}
- \end{figure}
 
 \chapter{Codificación}
 
