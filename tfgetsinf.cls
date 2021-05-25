@@ -172,9 +172,19 @@
 
 \RequirePackage{listings}
 
+\lstdefinelanguage{JavaScript}{
+  keywords={break, case, catch, continue, debugger, default, delete, do, else, finally, for, function, if, in, instanceof, new, return, switch, this, throw, try, typeof, var, void, while, with},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  sensitive=true
+}
+
 \lstset{ %
-	language=C++,					% choose the language of the code
+	language=JavaScript,					% choose the language of the code
 	basicstyle=\footnotesize,		% the size of the fonts that are used for the code
+	extendedchars=true,
 	numbers=left,                   % where to put the line-numbers
 	numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
 	stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
