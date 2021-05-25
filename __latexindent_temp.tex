@@ -345,7 +345,8 @@ Se ha realizado un diagrama de casos de uso, donde mostramos una vez logueado el
 A partir de analisis de los requisitos, obtenemos el siguiente diseño conceptual E/R.
 
 \begin{figure}[h!] % [h!]
-   \includegraphics[scale=0.5]{img/EntidadRelacion.png}
+  \centering
+   \includegraphics[scale=0.70]{img/EntidadRelacion.png}
    \caption{Diagrama E/R}
    \label{fig:diagramaer}
  \end{figure}
@@ -365,7 +366,7 @@ En el diseño físico he incluido funcionalidad de sequelize, que permite automa
 También he añadido como clave primaria un id en todas las tablas, para trabajar de forma más cómoda en la API.
 Por último, he aprovechado también la autocreación de relaciones entre tablas, para que nombrase automaticamente las relaciones.
 \begin{figure}[h!] % [h!]
-   \includegraphics[scale=0.75]{img/EsquemaBBDD.png}
+   \includegraphics[width=\linewidth]{img/EsquemaBBDD.png}
    \caption{Diagrama mysql}
    \label{fig:diagramaMysql}
  \end{figure}
@@ -415,13 +416,16 @@ Se ha usado yaml para el fichero de configuración de docker-compose y las accio
 
 Se ha usado tanto para el frontend como para el backend el lenguaje Javascript, unificando ambos en un único lenguaje, facilitando el mantenimiento y el desarrollo al sólo tener que usar un único lenguaje.
 
-En backend se ha usado la combinación de Node como motor de ejecución de javascript y Express como framework web, siendo una combinación muy usada para crear REST API, muy bien documentada.
-Para el acceso a la base de datos he optado por usar el ORM Sequelize, que conjuntamente con el uso de promesas dota de funcionamiento ininterrumpido el backend. 
+En backend se ha usado la combinación de Node.js como motor de ejecución de javascript y Express como framework web, siendo una combinación muy usada para crear REST API.
+
+Para el acceso a la base de datos he optado por usar el ORM Sequelize, que conjuntamente con el uso de las promesas de javascript dota de funcionamiento ininterrumpido el backend. 
 También realiza la función de prevenir la inyección de sql, si bien es cierto que en Sequelize 3.x y 5.x se descubrieron unas vulnerabilidades que permitían inyectar código sql en mariadb, se parchearon de forma definitiva en la versión 5.15.1, en el proyecto se ha usado la versión 6.6.2
+
 Para la gestión de accesos y contraseñas se ha usado el paquete node jsonwebtoken (JWT), que es componente de uso común para gestionar las sesiones entre cliente y servidor, y para encriptar la contraseña se ha usado el módulo bcrypt.
 
 En el frontend se ha usado Quasar, para poder generar una aplicación móvil e instalarla a través de herramientas MDM como SOTI, una aplicación de escritorio para los sistemas cerrados en los que no hay instalado un navegador, y la aplicación web de acceso común para el resto del personal.
-Se ha usado la librería QCalendar de Quasar, que dota de funciones de fecha/hora, así como un interfaz de calendario mensual/semanal/diario.
+Se ha usado la librería QCalendar de Quasar, que dota de funciones de fecha/hora, así como un interfaz de calendario mensual, semanal y diario.
+
 Para el acceso a la api, se ha usado axios, que es el módulo que recomienda Quasar para las peticiones Ajax.
 En la personalización de los usuarios adopté el módulo qiconpicker para elegir el icono personal y vue-html2pdf para imprimir el calendario. Vue-html2pdf es un componente basado en html2pdf, que te permite elegir el componente vue a imprimir directamente, su funcionalidad prácticamente es la misma que html2pdf.
 
@@ -438,8 +442,6 @@ Sequelize es uno de los ORM más usados en JavaScript, securizando el acceso a l
 JWT es un estándar para propagar la identidad del usuario identificado, necesario para poder realizar los distintos accesos a la API sin necesidad de crear sesiones.
 La información está codificada en objetos JSON. 
 
-Crear imagen de un token JWT (login-crea token-devuelve token --- Envia peticion con token-comprueba token-devuelve los datos pedidos)
-
 \section{Entorno cliente}
 
 Se ha usado el framework Quasar, basado en vue, para crear una SPA. 
@@ -447,6 +449,8 @@ Se ha usado el framework Quasar, basado en vue, para crear una SPA.
 También nos ha permitido crear la aplicación móvil y la de escritorio. En ambos casos, se ha usado de las librerías auxiliares Capacitor y Electron respectivamente.
 Este framework nos permite crear de forma muy rápida interfaces de usuario. 
 Las clases en los componentes Quasar funcionan prácticamente igual que Bootstrap para css, por lo que no ha habido prácticamente curva de aprendizaje.
+A continuación muestro un ejemplo la página de administración, con un diseño de 3 columnas en pc y 1 única en móvil, exactamente igual que se hace en Bootstrap.
+
 \begin{lstlisting}[language=HTML]
    <div class="row">
    <div
@@ -458,8 +462,9 @@ Las clases en los componentes Quasar funcionan prácticamente igual que Bootstra
    </div>
  </div>
 \end{lstlisting}
+Como se puede ver, el marcado de los márgenes y del paggind es distinto, puesto que se antepone a la clase la letra q, y después ya se indica si es padding o margin y el tamaño relativo.
 
-Y el código asociado para crear 3 tablas de edición 
+Quasar usa vue, por lo que permite la renderización condicional de elementos. A partir del listado anterior, con el siguiente código javascript, nos permite renderizar el componente de edición de tablas para los 3 elementos del array datos.
 
 \begin{lstlisting}[style=ES6, caption={ES6 (ECMAScript-2015) Listing}]
 import editortablas from "../components/EditorTablas.vue";
@@ -480,7 +485,73 @@ export default {
 };
 \end{lstlisting}
 
+Se han definido 2 layouts, uno sin menú lateral, para usar en páginas que no deban tener un menú, por ejemplo la página de login, y otro con un menú lateral con las diversas opciones que puede tener el usuario.
 
+Para la autenticación se usa, aparte de Axios y de JWT, Vuex para compartir la información de la autenticación, mutaciones para modificar el estado del usuario. 
+\begin{lstlisting}[style=ES6, caption={ES6 (ECMAScript-2015) Listing}]
+  export const AUTH_REQUEST = state => {
+    state.status = "loading";
+  };
+  export const AUTH_SUCCESS = state => {
+    state.status = "success";
+  };
+  export const AUTH_ERROR = state => {
+    state.status = "error";
+  };
+  export const AUTH_LOGOUT = state => {
+    state.status = "logout";
+  };
+\end{lstlisting}
+
+
+También he usado localstorage para almacenar los detalles del usuario, el token JWT, para así poder guardar la sesión. A continuación un fragmento del código de login y logout:
+
+\begin{lstlisting}[style=ES6, caption={ES6 (ECMAScript-2015) Listing}]
+  import { api } from "boot/axios";
+  export function AUTH_REQUEST({ commit, dispatch }, user) {
+    return new Promise((resolve, reject) => {
+      // The Promise used for router redirect in login
+      commit("AUTH_REQUEST");
+      api
+        .post("/api/auth/signin", user)
+        .then(resp => {
+          localStorage.setItem("user-token", resp.data.accessToken); // store the token in localstorage
+          //... Omitimos el resto de items a localstorage
+          commit("AUTH_SUCCESS");
+          // you have your token, now log in your user :)
+          //dispatch("USER_REQUEST");
+          resolve(resp);
+        })
+        .catch(err => {
+          commit("AUTH_ERROR", err);
+          localStorage.removeItem("user-token"); // if the request fails, remove any possible user token if possible
+          reject(err);
+        });
+    });
+  }  
+  export function AUTH_LOGOUT({ commit, dispatch }) {
+    return new Promise((resolve, reject) => {
+      // The Promise used for router redirect in login
+      commit("AUTH_LOGOUT");
+      localStorage.removeItem("user-token");
+      resolve();
+    });
+  }
+\end{lstlisting}
+
+El menú lateral se ha creado como componente, renderizando los puntos de menú de forma condicional al rol que se ha obtenido en el login.
+
+\begin{lstlisting}[style=ES6, caption={ES6 (ECMAScript-2015) Listing}]
+  <q-item to="/admin" exact v-if="rol > 2">
+  <q-item-section avatar>
+    <q-icon name="admin_panel_settings" />
+  </q-item-section>
+
+  <q-item-section>
+    Panel administrador
+  </q-item-section>
+</q-item>
+\end{lstlisting}
 
 \chapter{Despliegue}
 
