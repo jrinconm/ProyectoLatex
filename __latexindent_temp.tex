@@ -342,6 +342,7 @@ Se ha realizado un diagrama de casos de uso, donde mostramos una vez logueado el
 \chapter{Diseño}
 
 \section{Diseño Conceptual Entidad Relación}
+A partir de analisis de los requisitos, obtenemos el siguiente diseño conceptual E/R.
 
 \begin{figure}[h!] % [h!]
    \includegraphics[width=\linewidth]{img/EntidadRelacion.png}
@@ -350,15 +351,19 @@ Se ha realizado un diagrama de casos de uso, donde mostramos una vez logueado el
  \end{figure}
 
 \section{Diseño Lógico Relacional o Paso a tablas}
+Siguiendo el anterior esquema E/R, hemos pasado a tablas las entidades y relaciones.
+Finalmente no ha sido el diseño definitivo, puesto que por sencillez de trabajo, he decidido asignar una clave primaria distinta a la que sale naturalmente.
 
 \begin{figure}[h!] % [h!]
-  \includegraphics[width=\linewidth]{img/pasotablas.jpg}
+  \includegraphics[width=\linewidth]{img/pasotablas.png}
   \caption{Diagrama Lógico Relacional}
   \label{fig:diagramalr}
 \end{figure}
 
 \section{Diseño Físico o Diagrama Mysql}
-
+En el diseño físico he incluido funcionalidad de sequelize, que permite automatizar la fecha de creación y modificación de los campos.
+También he añadido como clave primaria un id en todas las tablas, para trabajar de forma más cómoda en la API.
+Por último, he aprovechado también la autocreación de relaciones entre tablas, para que nombrase automaticamente las relaciones.
 \begin{figure}[h!] % [h!]
    \includegraphics[width=\linewidth]{img/EsquemaBBDD.png}
    \caption{Diagrama mysql}
@@ -386,22 +391,11 @@ Pendiente
  \end{figure}
 
  \begin{figure}[h!] % [h!]
-   \includegraphics[width=\linewidth]{img/Vista_Calendario_MVL.png}
-   \caption{Mockup vista calendario movil}
-   \label{fig:calendarioMVL}
- \end{figure}
-
- \begin{figure}[h!] % [h!]
    \includegraphics[width=\linewidth]{img/Vista_Opciones_PC.png}
    \caption{Mockup vista opciones pc}
    \label{fig:opcionesPC}
  \end{figure}
 
- \begin{figure}[h!] % [h!]
-   \includegraphics[width=\linewidth]{img/Vista_Opciones_MVL.png}
-   \caption{Mockup vista opciones movil}
-   \label{fig:opcionesMVL}
- \end{figure}
 
  \begin{figure}[h!] % [h!]
    \includegraphics[width=\linewidth]{img/Vista_Informes_PC.png}
@@ -410,19 +404,31 @@ Pendiente
  \end{figure}
 
  \begin{figure}[h!] % [h!]
-   \includegraphics[width=\linewidth]{img/Vista_Informes_MVL.png}
+  \includegraphics[width=0.32\textwidth]{img/Vista_Calendario_MVL.png}
+  \caption{Mockup vista calendario movil}
+  \label{fig:calendarioMVL}
+\end{figure}
+
+ \begin{figure}[h!] % [h!]
+   \includegraphics[width=0.32\textwidth]{img/Vista_Opciones_MVL.png}
+   \caption{Mockup vista opciones movil}
+   \label{fig:opcionesMVL}
+ \end{figure}
+
+ \begin{figure}[h!] % [h!]
+   \includegraphics[width=0.32\textwidth]{img/Vista_Informes_MVL.png}
    \caption{Mockup vista informes movil}
    \label{fig:informesMVL}
  \end{figure}
 
  \begin{figure}[h!] % [h!]
-   \includegraphics[width=\linewidth]{img/Vista_Administracion_PC.png}
+   \includegraphics[width=0.64\textwidth]{img/Vista_Administracion_PC.png}
    \caption{Mockup vista administracion pc}
    \label{fig:administracionPC}
  \end{figure}
 
  \begin{figure}[h!] % [h!]
-   \includegraphics[width=\linewidth]{img/Vista_Administracion_MVL.png}
+   \includegraphics[width=0.32\textwidth]{img/Vista_Administracion_MVL.png}
    \caption{Mockup vista administracion movil}
    \label{fig:administracionMVL}
  \end{figure}
