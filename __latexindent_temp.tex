@@ -426,7 +426,7 @@ Para la gestión de accesos y contraseñas se ha usado el paquete node jsonwebto
 En el frontend se ha usado Quasar, para poder generar una aplicación móvil e instalarla a través de herramientas MDM como SOTI, una aplicación de escritorio para los sistemas cerrados en los que no hay instalado un navegador, y la aplicación web de acceso común para el resto del personal.
 Se ha usado la librería QCalendar de Quasar, que dota de funciones de fecha/hora, así como un interfaz de calendario mensual, semanal y diario.
 
-Para el acceso a la api, se ha usado axios, que es el módulo que recomienda Quasar para las peticiones Ajax.
+Para el acceso a la api, se ha usado axios, que es el módulo que recomienda Quasar para las peticiones Ajax. Se ha usado Vuex para amacenar el estado de la autenticación.
 En la personalización de los usuarios adopté el módulo qiconpicker para elegir el icono personal y vue-html2pdf para imprimir el calendario. Vue-html2pdf es un componente basado en html2pdf, que te permite elegir el componente vue a imprimir directamente, su funcionalidad prácticamente es la misma que html2pdf.
 
 He usado imagenes docker compatibles tanto con windows como con linux. Para esto se ha tenido que realizar algún sacrificio, como no usar el cron de linux, pero la aplicación completa puede correr tanto en windows como en linux.
