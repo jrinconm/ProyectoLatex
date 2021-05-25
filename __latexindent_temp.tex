@@ -134,17 +134,35 @@ Que puedan consultar de forma rápida si al día siguiente es turno presencial o
 
 \chapter{Estado del arte}
 
+Se ha creado un microservicio en un contenedor docker basado en node.js , usando el framework xpress, para comunicar con la base de datos mariadb a través del ORM Sequelize. 
+
 El ORM (object-relational mapping) Sequelize, desde su versión 4, permite el uso de clases ES6, por lo que se ha usado una clase básica con los parametros comunes, eliminando codigo duplicado.
 
 Se ha integrado CI/CD en la creación de esta documentación, a través de github actions, compilando el documento al realizar un push en el respositorio.
 
 El uso de Sonarqube ha limitado el código duplicado, llegando a ser inexistente en la parte del frontend.
 
-Quasar es una herramienta basada en vue que permite crear itnerfaces gráficos de forma sencilla.
+En el frontend se ha usado el framework Quasar, es una herramienta basada en vue que permite crear interfaces gráficos de forma sencilla.
 
-Docker es una virtualización muy ligera que combinada con docker-compose permite crear el despliegue de la aplicación en multiples sistemas de forma muy sencilla.
+En el despliegue, lo hemos intregrado con Docker, que es una virtualización muy ligera, que combinada con docker-compose permite crear el despliegue de la aplicación en multiples sistemas de forma muy sencilla.
 
-Google cloud es uno de los servidores donde podemos desplegarlo, viendo las posibilidades con aplicación móvil y sin ella.
+Google cloud es uno de los servidores donde podemos desplegarlo, con las posibilidades con aplicación móvil y sin ella, así como en un servidor dedicado.
+
+
+\begin{figure}[!htb]
+   \minipage{0.32\textwidth}
+     \includegraphics[width=\linewidth]{img/Moby-logo.png}
+     \caption{Logotipo Docker}\label{fig:LogoDocker}
+   \endminipage\hfill
+   \minipage{0.32\textwidth}
+     \includegraphics[width=\linewidth]{img/Node.js_logo.svg}
+     \caption{Logotipo Node.js}\label{fig:LogoNode}
+   \endminipage\hfill
+   \minipage{0.32\textwidth}%
+     \includegraphics[width=\linewidth]{img/Sequelize_logo.png}
+     \caption{Logotipo Sequelize}\label{fig:LogoSequelize}
+   \endminipage
+   \end{figure}
 
 \chapter{Estudio de viabilidad. Método DAFO}
 
