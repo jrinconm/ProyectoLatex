@@ -134,7 +134,7 @@ Que puedan consultar de forma rápida si al día siguiente es turno presencial o
 
 \chapter{Estado del arte}
 
-Se ha creado un microservicio en un contenedor docker basado en node.js , usando el framework xpress, para comunicar con la base de datos mariadb a través del ORM Sequelize. 
+Se ha creado un microservicio en un contenedor docker basado en node.js , usando el framework express, para comunicar con la base de datos mariadb a través del ORM Sequelize. 
 
 El ORM (object-relational mapping) Sequelize, desde su versión 4, permite el uso de clases ES6, por lo que se ha usado una clase básica con los parametros comunes, eliminando codigo duplicado.
 
@@ -146,14 +146,11 @@ En el frontend se ha usado el framework Quasar, es una herramienta basada en vue
 
 En el despliegue, lo hemos intregrado con Docker, que es una virtualización muy ligera, que combinada con docker-compose permite crear el despliegue de la aplicación en multiples sistemas de forma muy sencilla.
 
-Google cloud es uno de los servidores donde podemos desplegarlo, con las posibilidades con aplicación móvil y sin ella, así como en un servidor dedicado.
+Google cloud es uno de los servidores donde podemos desplegarlo, con la posibilidad de incluir la aplicación móvil o no, así como en un servidor virtual dedicado (infraestructura propia)
 
+A continuación, los logotipos de las tecnologías usadas:
 
 \begin{figure}[!htb]
-   \minipage{0.32\textwidth}
-     \includegraphics[width=\linewidth]{img/Moby-logo.png}
-     \caption{Logotipo Docker}\label{fig:LogoDocker}
-   \endminipage\hfill
    \minipage{0.32\textwidth}
      \includegraphics[width=\linewidth]{img/Node.js_logo.png}
      \caption{Logotipo Node.js}\label{fig:LogoNode}
@@ -162,12 +159,16 @@ Google cloud es uno de los servidores donde podemos desplegarlo, con las posibil
      \includegraphics[width=\linewidth]{img/Sequelize_logo.png}
      \caption{Logotipo Sequelize}\label{fig:LogoSequelize}
    \endminipage
+   \minipage{0.32\textwidth}
+   \includegraphics[width=\linewidth]{img/mariadb_logo.png}
+   \caption{Logotipo MariaDB}\label{fig:LogoMariaDB}
+ \endminipage\hfill
 \end{figure}
 
 \begin{figure}[!htb]
    \minipage{0.32\textwidth}
      \includegraphics[width=\linewidth]{img/GithubActions-logo.png}
-     \caption{Logotipo github actions}\label{fig:LogoGithub}
+     \caption{Logotipo Github actions}\label{fig:LogoGithub}
    \endminipage\hfill
    \minipage{0.32\textwidth}
      \includegraphics[width=\linewidth]{img/SonarQube_logo.png}
@@ -178,6 +179,24 @@ Google cloud es uno de los servidores donde podemos desplegarlo, con las posibil
      \caption{Logotipo Quasar}\label{fig:LogoQuasar}
    \endminipage
 \end{figure}
+
+
+\begin{figure}[!htb]
+   \minipage{0.32\textwidth}
+   \includegraphics[width=\linewidth]{img/Moby-logo.png}
+   \caption{Logotipo Docker}\label{fig:LogoDocker}
+   \endminipage\hfill
+   \minipage{0.32\textwidth}
+     \includegraphics[width=\linewidth]{img/google_cloud_main.png}
+     \caption{Logotipo Google cloud}\label{fig:LogoGcloud}
+   \endminipage\hfill
+   \minipage{0.32\textwidth}%
+     \includegraphics[width=\linewidth]{img/logo-vmware.jpg}
+     \caption{Logotipo Vmware}\label{fig:LogoVmware}
+   \endminipage
+\end{figure}
+
+
 
 
 \chapter{Estudio de viabilidad. Método DAFO}
