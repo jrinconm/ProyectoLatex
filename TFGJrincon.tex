@@ -680,7 +680,8 @@ También he usado localstorage para almacenar los detalles del usuario, el token
       api
         .post("/api/auth/signin", user)
         .then(resp => {
-          localStorage.setItem("user-token", resp.data.accessToken); // store the token in localstorage
+          // store the token in localstorage
+          localStorage.setItem("user-token", resp.data.accessToken); 
           //... Omitimos el resto de items a localstorage
           commit("AUTH_SUCCESS");
           // you have your token, now log in your user :)
@@ -689,7 +690,8 @@ También he usado localstorage para almacenar los detalles del usuario, el token
         })
         .catch(err => {
           commit("AUTH_ERROR", err);
-          localStorage.removeItem("user-token"); // if the request fails, remove any possible user token if possible
+          // if the request fails, remove any possible user token if possible
+          localStorage.removeItem("user-token"); 
           reject(err);
         });
     });
@@ -741,7 +743,7 @@ Docker y Docker Compose como entorno de virtualización.
 %                                 CONCLUSIONS                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Conclusions}
+\chapter{Conclusiones}
 
 ????? ????????????? ????????????? ????????????? ????????????? ????????????? 
 
@@ -752,34 +754,44 @@ Docker y Docker Compose como entorno de virtualización.
 \begin{thebibliography}{10}
 
 \bibitem{WAR}
+   Documentación oficial sequelize.
+   \newblock Consultado en 
+   \url{https://sequelize.org/master}.
+
+\bibitem{WAR}
    Issue del github de sequelize donde está la definición y ejemplos de clases para definir los modelos.
-   \newblock Consultat a 
+   \newblock Consultado en
    \url{https://github.com/sequelize/sequelize/issues/6524}.
 
 \bibitem{WAR}
-   Howto creación de api con Node, Sequelize, Express y mysql.
-   \newblock Consultat a 
-   \url{https://bezkoder.com/node-js-express-sequelize-mysql}.
+   Documentación oficial Quasar.
+   \newblock Consultado en 
+   \url{https://quasar.dev/start/pick-quasar-flavour}.
 
-\bibitem{WAR}
-   Documentación oficial sequelize.
-   \newblock Consultat a 
-   \url{https://sequelize.org/master}.
-
-\bibitem{WAR}
-   Documentación oficial sequelize.
-   \newblock Consultat a 
-   \url{https://sequelize.org/master}.
-
-\bibitem{WAR}
+   \bibitem{WAR}
    Documentación oficial componente QCalendar.
-   \newblock Consultat a 
+   \newblock Consultado en 
    \url{https://quasarframework.github.io/quasar-ui-qcalendar/docs}.
 
 \bibitem{WAR}
    Documentación oficial Express.
-   \newblock Consultat a 
+   \newblock Consultado en 
    \url{https://expressjs.com/es/guide/routing.html}.
+
+\bibitem{WAR}
+  Documentación oficial Vuex.
+   \newblock Consultado en 
+   \url{https://next.vuex.vuejs.org/}.
+
+\bibitem{WAR}
+   Howto creación de api con Node, Sequelize, Express y mysql.
+   \newblock Consultado en
+   \url{https://bezkoder.com/node-js-express-sequelize-mysql}.
+
+\bibitem{WAR}
+   Howto autenticación Vue con Vuex
+   \newblock Consultado en
+   \url{https://www.digitalocean.com/community/tutorials/handling-authentication-in-vue-using-vuex}.
 
 \end{thebibliography}
 \cleardoublepage
