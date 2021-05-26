@@ -443,17 +443,17 @@ Gracias al middleware Express, se ha creado el API de forma simple, dividiendo l
   require("./app/routes/rol.routes")(app);
   require("./app/routes/user.routes")(app);
   require("./app/routes/auth.routes")(app);
-  \end{lstlisting}
+\end{lstlisting}
 
   En caso de querer cambiar el puerto, sólo hay que modificar el fichero server.js, para cambiar la constante PORT por el puerto que queramos usar. 
 
-  \begin{lstlisting}[style=ES6, caption={Configuración del puerto de la API }]
-    // set port, listen for requests
-    const PORT = process.env.PORT || 8080;
-    app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
+\begin{lstlisting}[style=ES6, caption={Configuración del puerto de la API }]
+  // set port, listen for requests
+  const PORT = process.env.PORT || 8080;
+  app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
   });
-    \end{lstlisting}
+\end{lstlisting}
 
 Sequelize es uno de los ORM más usados en JavaScript, securizando el acceso a los datos. La configuración se realiza a través de un objeto en el fichero config/db.config.js, la contraseña debe ser la misma que la que se ha configurado en la base de datos.
 \begin{lstlisting}[style=ES6, caption={Configuración de la BBDD para Sequelize}]
@@ -470,7 +470,7 @@ Sequelize es uno de los ORM más usados en JavaScript, securizando el acceso a l
       idle: 10000,
     },
   };
-  \end{lstlisting}
+\end{lstlisting}
 Este objeto se importa al inicializar Sequelize:
 \begin{lstlisting}[style=ES6, caption={Importación de la configuración e instanciación de Sequelize}]
   const config = require("../config/db.config.js");
@@ -485,7 +485,7 @@ Este objeto se importa al inicializar Sequelize:
       idle: config.pool.idle,
     },
   });
-  \end{lstlisting}
+\end{lstlisting}
 
 La mayoría de la documentación existente en internet no usa sus clases, sino que directamente crea objetos. En esta aplicación hemos usado las clases existentes para poder eliminar código duplicado existente en la creación de todos los objetos.
 En el caso de querer modificar algo, por ejemplo, eliminar el id para que el propio nombre fuera la clave principal, sólo tendría que modificar la clase base, no todos los objetos.
