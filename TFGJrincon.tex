@@ -763,6 +763,14 @@ Por ejemplo, clonando el repositorio, o directamente con wget. Una vez descargad
 docker run --rm  -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:$PWD" -w="$PWD"  docker/compose:1.24.0 up -d
 \end{lstlisting}
 Este comando nos levantara tanto los contenedores de la aplicación, como un contenedor puntual de phpmyadmin para que podamos crear la base de datos, restaurar un backup, o modificar lo que creamos conveniente.
+Una vez levantado todo el sistema, sólo nos falta comprobar en el panel, cual es la dirección ip externa, para comprobar que se ha levantado correctamente nuestra aplicación. Esta dirección se puede comprobar directamente en la instacia de la máquina virtual.
+\begin{figure}[h!] % [h!]
+  \centering
+   \includegraphics[scale=0.80]{img/ipexterna.png}
+   \caption{Ip externa 34.123.45.231}
+   \label{fig:cargaweb}
+ \end{figure}
+
 Los contenedores los podemos personalizar, sobretodo para cambiar las contraseñas y cadenas por defecto, para realizarlo, podemos consultar el \hyperref[chapter:config]{apéndice A}.
 
 \chapter{Herramientas de apoyo}
@@ -874,6 +882,13 @@ El código lo podemos probar en entorno de pruebas con contenedores docker, que 
    Howto autenticación Vue con Vuex
    \newblock Consultado en
    \url{https://www.digitalocean.com/community/tutorials/handling-authentication-in-vue-using-vuex}.
+
+   \bibitem{WAR}
+   Plantillas Latex TFG etsinf
+   \newblock Consultado en
+   \url{https://www.inf.upv.es/www/etsinf/es/plantilla-tfg/}.
+
+   
 
 \end{thebibliography}
 \cleardoublepage

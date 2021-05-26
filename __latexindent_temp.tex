@@ -762,16 +762,70 @@ Por ejemplo, clonando el repositorio, o directamente con wget. Una vez descargad
 \begin{lstlisting}[language=bash, caption={comando docker para lanzar docker-compose}]
 docker run --rm  -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:$PWD" -w="$PWD"  docker/compose:1.24.0 up -d
 \end{lstlisting}
+Este comando nos levantara tanto los contenedores de la aplicación, como un contenedor puntual de phpmyadmin para que podamos crear la base de datos, restaurar un backup, o modificar lo que creamos conveniente.
+Una vez levantado todo el sistema, sólo nos falta comprobar en el panel, cual es la dirección ip externa, para comprobar que se ha levantado correctamente nuestra aplicación. Esta dirección se puede comprobar directamente en la instacia de la máquina virtual.
+\begin{figure}[h!] % [h!]
+  \centering
+   \includegraphics[scale=0.80]{img/ipexterna.png}
+   \caption{Ip externa 34.123.45.231}
+   \label{fig:cargaweb}
+ \end{figure}
+
+Los contenedores los podemos personalizar, sobretodo para cambiar las contraseñas y cadenas por defecto, para realizarlo, podemos consultar el \hyperref[chapter:config]{apéndice A}.
 
 \chapter{Herramientas de apoyo}
 
-Visual Studio Code como IDE.
-Sonarqube para analizar la calidad del código.
-Git como control de versiones.
-Github Actions como CI/CD.
-Docker y Docker Compose como entorno de virtualización.
+Se ha usado Visual Studio Code como IDE, se ha configurado un workspace con los diferentes subproyectos, y se han instalado las siguientes extensiones:
 
+\begin{itemize}
+  \item Docker. Permite crear y gestionar los contenedores.
+  \item ESlint. Integra el linter ESlint en VSCode.
+  \item Git History. Permite comparar commits y ramas.
+  \item GitLens. Permite hacer un diff de los cambios frente el ultimo commit, entre muchas más opciones.
+  \item LaTeX Workshop. Previsualiza y compila código LaTeX.
+  \item Prettier. Formateador de código usado.
+  \item Vetur. Añade intellisense Vue.
+\end{itemize}
 
+He usado Sonarqube para analizar la calidad del código, me ha ayudado a hacer más seguro el código, eliminando posibles puntos de fallo, así como limpiar código duplicado.
+Actualmente, Sonarqube le da la máxima calificación a mi código, tanto en bugs, como en vulnerabilidades, y en el caso del frontend de líneas duplicadas.
+\begin{figure}[h!] % [h!]
+  \centering
+   \includegraphics[scale=0.80]{img/estadosonar.png}
+   \caption{Analisis del código por Sonarqube}
+   \label{fig:estadosonar}
+ \end{figure}
+Como curiosidad, integra una utilidad para ver como una ciudad el código, siendo los edificios los ficheros, las manzanas los subdirectorios, de esta forma, de un sólo vistazo, se puede ver qué ficheros son los que contienen más líneas de código, por si es necesario refactorizar.
+\begin{figure}[h!] % [h!]
+  \centering
+   \includegraphics[scale=0.80]{img/calendarioSonarqube.png}
+   \caption{Fichero calendario.vue en vista 3d}
+   \label{fig:calendariosonar}
+ \end{figure}
+También se ha usado git para el control de versiones, siendo Github la plataforma usada. Dentro de esta plataforma, tenemos un componente CI/CD que lo han llamado Github Actions, que he empleado para compilar el código látex según iba realizando los commits.
+Una vez compilado el documento, lo dejaba como un artefacto de esa build, comprimido en un zip. 
+\begin{lstlisting}[style=ES6, caption={Configuración action github}]
+  name: Build LaTeX document
+  on: [push]
+  jobs:
+    build_latex:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Set up Git repository
+          uses: actions/checkout@v2
+        - name: Compile LaTeX document
+          uses: xu-cheng/latex-action@v2
+          with:
+            root_file: TFGJrincon.tex
+        - uses: actions/upload-artifact@v2
+          with:
+            name: PDF
+            path: TFGJrincon.pdf
+\end{lstlisting}
+
+Docker y Docker Compose como entorno de virtualización, y en mi perfil del hub tengo las imágenes compiladas para poder desplegarlas de forma ŕapida. 
+Para la realización de los mockups he usado el site \url{https://mockflow.com/app/#Wireframe}{Mockflow}.
+En la parte de los diagramas he usado el site \url{https://lucid.app/}{Lucid}, que anteriomente se llamaba directamente LucidChart, y Visual Paradigm.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                 CONCLUSIONS                                 %
@@ -779,7 +833,9 @@ Docker y Docker Compose como entorno de virtualización.
 
 \chapter{Conclusiones}
 
-????? ????????????? ????????????? ????????????? ????????????? ????????????? 
+La combinación de Node.js con Express y sequelize permite crear microservicios de una forma simple, que combinado con la velocidad que de maquetación de quasar, nos permite crear aplicaciones de forma rápida.
+Si unimos analizadores de código, como Sonarqube, añadimos a la velocidad de creación, seguridad, limpieza y estabilidad. 
+El código lo podemos probar en entorno de pruebas con contenedores docker, que a su vez nos permitirán desplegarlo de forma ágil, tanto en la nube como en nuestra propia infraestructura.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                BIBLIOGRAFIA                                 %
@@ -827,6 +883,13 @@ Docker y Docker Compose como entorno de virtualización.
    \newblock Consultado en
    \url{https://www.digitalocean.com/community/tutorials/handling-authentication-in-vue-using-vuex}.
 
+   \bibitem{WAR}
+   Plantillas Latex TFG etsinf
+   \newblock Consultado en
+   \url{https://www.inf.upv.es/www/etsinf/es/plantilla-tfg/}.
+
+   
+
 \end{thebibliography}
 \cleardoublepage
 
@@ -841,7 +904,7 @@ Docker y Docker Compose como entorno de virtualización.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Configuració del sistema}
-
+\label{chapter:config}
 Clonado del repo, ficheros a cambiar, contrucción de las imagenes.
 
 
