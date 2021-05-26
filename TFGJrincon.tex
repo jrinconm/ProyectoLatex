@@ -762,10 +762,13 @@ Por ejemplo, clonando el repositorio, o directamente con wget. Una vez descargad
 \begin{lstlisting}[language=bash, caption={comando docker para lanzar docker-compose}]
 docker run --rm  -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:$PWD" -w="$PWD"  docker/compose:1.24.0 up -d
 \end{lstlisting}
+Este comando nos levantara tanto los contenedores de la aplicación, como un contenedor puntual de phpmyadmin para que podamos crear la base de datos, restaurar un backup, o modificar lo que creamos conveniente.
+Los contenedores los podemos personalizar, sobretodo para cambiar las contraseñas y cadenas por defecto, para realizarlo, podemos consultar el \hyperref[chapter:config]{apéndice A}.
 
 \chapter{Herramientas de apoyo}
 
-Visual Studio Code como IDE.
+Se ha usado Visual Studio Code como IDE, se ha configurado un workspace con los diferentes subproyectos. 
+
 Sonarqube para analizar la calidad del código.
 Git como control de versiones.
 Github Actions como CI/CD.
@@ -841,7 +844,7 @@ Docker y Docker Compose como entorno de virtualización.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Configuració del sistema}
-
+\label{chapter:config}
 Clonado del repo, ficheros a cambiar, contrucción de las imagenes.
 
 
