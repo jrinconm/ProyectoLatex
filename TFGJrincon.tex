@@ -738,7 +738,7 @@ La configuración de la máquina ha sido la más sencilla, e2-micro, con 2 virtu
 
 \begin{figure}[h!] % [h!]
   \centering
-   \includegraphics[scale=0.80]{img/cargas de trabajo.png}
+   \includegraphics[width=0.90\textwidth]{img/cargas de trabajo.png}
    \caption{Tipos de máquinas según su uso}
    \label{fig:cargas}
  \end{figure}
@@ -748,7 +748,7 @@ La configuración de la máquina ha sido la más sencilla, e2-micro, con 2 virtu
 
  \begin{figure}[h!] % [h!]
   \centering
-   \includegraphics[scale=0.80]{img/cargaGoogleCloud.png}
+   \includegraphics[width=0.90\textwidth]{img/cargaGoogleCloud.png}
    \caption{Carga durante una hora de la web}
    \label{fig:cargaweb}
  \end{figure}
@@ -760,13 +760,13 @@ En este punto, la instalación es igual que en un servidor dedicado o físico de
 Por ejemplo, clonando el repositorio, o directamente con wget. Una vez descargado, al no estar instalado docker-compose, lo vamos a ejecutar dentro de un contenedor a su vez también:
 
 \begin{lstlisting}[language=bash, caption={comando docker para lanzar docker-compose}]
-docker run --rm  -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:$PWD" -w="$PWD"  docker/compose:1.24.0 up -d
+docker run --rm  -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:$PWD"   -w="$PWD"  docker/compose:1.24.0 up -d
 \end{lstlisting}
 Este comando nos levantara tanto los contenedores de la aplicación, como un contenedor puntual de phpmyadmin para que podamos crear la base de datos, restaurar un backup, o modificar lo que creamos conveniente.
 Una vez levantado todo el sistema, sólo nos falta comprobar en el panel, cual es la dirección ip externa, para comprobar que se ha levantado correctamente nuestra aplicación. Esta dirección se puede comprobar directamente en la instacia de la máquina virtual.
 \begin{figure}[h!] % [h!]
   \centering
-   \includegraphics[scale=0.80]{img/ipexterna.png}
+   \includegraphics[width=0.90\textwidth]{img/ipexterna.png}
    \caption{Ip externa 34.123.45.231}
    \label{fig:cargaweb}
  \end{figure}
@@ -776,7 +776,6 @@ Los contenedores los podemos personalizar, sobretodo para cambiar las contraseñ
 \chapter{Herramientas de apoyo}
 
 Se ha usado Visual Studio Code como IDE, se ha configurado un workspace con los diferentes subproyectos, y se han instalado las siguientes extensiones:
-
 \begin{itemize}
   \item Docker. Permite crear y gestionar los contenedores.
   \item ESlint. Integra el linter ESlint en VSCode.
@@ -791,14 +790,14 @@ He usado Sonarqube para analizar la calidad del código, me ha ayudado a hacer m
 Actualmente, Sonarqube le da la máxima calificación a mi código, tanto en bugs, como en vulnerabilidades, y en el caso del frontend de líneas duplicadas.
 \begin{figure}[h!] % [h!]
   \centering
-   \includegraphics[scale=0.80]{img/estadosonar.png}
+   \includegraphics[width=0.90\textwidth]{img/estadosonar.png}
    \caption{Analisis del código por Sonarqube}
    \label{fig:estadosonar}
  \end{figure}
 Como curiosidad, integra una utilidad para ver como una ciudad el código, siendo los edificios los ficheros, las manzanas los subdirectorios, de esta forma, de un sólo vistazo, se puede ver qué ficheros son los que contienen más líneas de código, por si es necesario refactorizar.
 \begin{figure}[h!] % [h!]
   \centering
-   \includegraphics[scale=0.80]{img/calendarioSonarqube.png}
+   \includegraphics[width=0.30\textwidth]{img/calendarioSonarqube.png}
    \caption{Fichero calendario.vue en vista 3d}
    \label{fig:calendariosonar}
  \end{figure}
