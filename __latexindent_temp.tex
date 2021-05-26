@@ -138,7 +138,7 @@ Se ha creado un microservicio en un contenedor docker basado en node.js , usando
 
 El ORM (object-relational mapping) Sequelize, desde su versión 4, permite el uso de clases ES6, por lo que se ha usado una clase básica con los parámetros comunes, eliminando código duplicado.
 
-Se ha integrado CI/CD en la creación de esta documentación, a través de github actions, compilando el documento al realizar un push en el repositorio.
+Se ha integrado CI/CD en la creación de esta documentación, a través de github actions, compilando el documento al realizar un push en el repositorio \url{https://github.com/jrinconm/ProyectoLatex}.
 
 El uso de Sonarqube ha limitado el código duplicado, llegando a ser inexistente en la parte del frontend.
 
@@ -430,6 +430,7 @@ He usado imágenes docker compatibles tanto con windows como con linux. Para est
 Se puede usar tanto el docker-compose suministrado como levantar los distintos contenedores en equipos distintos, sólo necesario configurar el fichero de cliente, así se puede desplegar prácticamente sin esfuerzo, a través de los contenedores ya creados desde dockerhub , o creándolos a través de sus fuentes de github. 
 
 \section{Entorno servidor}
+El código fuente del frontend está alojado en github en la siguiente dirección: \url{https://github.com/jrinconm/TurnosApi}
 Node.js es un motor de ejecución JavaScript muy ligero, que puede realizar funciones de servidor web. 
 En niveles de carga altos, está por debajo de nginx o apache, pero para las necesidades que tenemos para el API, es suficiente y rápido.
 
@@ -604,7 +605,7 @@ La información está codificada en objetos JSON. Usa una cadena para firmar est
   };
 \end{lstlisting}
 \section{Entorno cliente}
-
+El código fuente del frontend está alojado en github en la siguiente dirección: \url{https://github.com/jrinconm/TurnosFront}
 Se ha usado el framework Quasar, basado en vue, para crear una SPA. 
 
 También nos ha permitido crear la aplicación móvil y la de escritorio. En ambos casos, se ha usado de las librerías auxiliares Capacitor y Electron respectivamente.
@@ -718,7 +719,7 @@ El menú lateral se ha creado como componente, renderizando los puntos de menú 
 % Despliegue
 \chapter{Despliegue}
 
-El despliegue se ha realizado mediante docker-compose en una instancia de Google Cloud, expuesto a internet en la siguiente dirección:
+El despliegue se ha realizado mediante docker-compose (compose file en \url{https://github.com/jrinconm/docker-turnos}) en una instancia de Google Cloud, expuesto a internet en la siguiente dirección:
 \url{http://jrincon.eu}.
 
 \section{Configuración de la instancia}
