@@ -412,7 +412,8 @@ Pendiente
 
 \section{Tecnologías elegidas y su justificación}
 
-Se ha usado yaml para el fichero de configuración de docker-compose y las acciones de github, \LaTeX{} se ha usado para crear la documentación, siendo ambos lenguajes de marcas.
+Se ha usado yaml para el fichero de configuración de docker-compose y las acciones de github, \LaTeX{} se ha usado para crear la documentación, siendo ambos lenguajes de marcas. 
+No se ha podido elegir json ni otras alternativas, al ser el formato elegido por docker y github. He elegido \LaTeX{} frente a Word o LibreOffice, ya que conocía el lenguaje, me permitía automáticamente colorear el código, y la presetnación me parece más profesional.
 
 Se ha usado tanto para el frontend como para el backend el lenguaje Javascript, unificando ambos en un único lenguaje, facilitando el mantenimiento y el desarrollo al sólo tener que usar un único lenguaje.
 
@@ -424,24 +425,190 @@ También realiza la función de prevenir la inyección de sql, si bien es cierto
 Para la gestión de accesos y contraseñas se ha usado el paquete node jsonwebtoken (JWT), que es componente de uso común para gestionar las sesiones entre cliente y servidor, y para encriptar la contraseña se ha usado el módulo bcrypt.
 
 En el frontend se ha usado Quasar, para poder generar una aplicación móvil e instalarla a través de herramientas MDM como SOTI, una aplicación de escritorio para los sistemas cerrados en los que no hay instalado un navegador, y la aplicación web de acceso común para el resto del personal.
-Se ha usado la librería QCalendar de Quasar, que dota de funciones de fecha/hora, así como un interfaz de calendario mensual, semanal y diario.
+Se ha usado la librería QCalendar de Quasar, que dota de funciones de fecha/hora, así como un interfaz de calendario mensual, semanal y diario, siendo así innecesario tener que crear todo el calendario desde cero.
 
 Para el acceso a la api, se ha usado axios, que es el módulo que recomienda Quasar para las peticiones Ajax. Se ha usado Vuex para amacenar el estado de la autenticación.
 En la personalización de los usuarios adopté el módulo qiconpicker para elegir el icono personal y vue-html2pdf para imprimir el calendario. Vue-html2pdf es un componente basado en html2pdf, que te permite elegir el componente vue a imprimir directamente, su funcionalidad prácticamente es la misma que html2pdf.
 
 He usado imagenes docker compatibles tanto con windows como con linux. Para esto se ha tenido que realizar algún sacrificio, como no usar el cron de linux, pero la aplicación completa puede correr tanto en windows como en linux.
-Se puede usar tanto el docker-compose suministrado como levantar los distintos contenedores en equipos distintos, sólo necesario configurar el fichero de cliente.
+Se puede usar tanto el docker-compose suministrado como levantar los distintos contenedores en equipos distintos, sólo necesario configurar el fichero de cliente, así se puede desplegar prácticamente sin esfuerzo, a través de los contenedores ya creados desde dockerhub , o creándolos a través de sus fuentes de github. 
 
 \section{Entorno servidor}
 Node.js es un motor de ejecución JavaScript muy ligero, que puede realizar funciones de servidor web. 
 En niveles de carga altos, está por debajo de nginx o apache, pero para las necesidades que tenemos para el API, es suficiente y rápido.
 
 Se suele usar un servidor Nginx como proxy inverso al servidor node, en primera instancia no se va a implementar ya que el objetivo es que esté tanto cliente como servidor en el mismo equipo, unidos sólo por el tunel docker.
+Gracias al middleware Express, se ha creado el API de forma simple, dividiendo las rutas en ficheros para modularizar la aplicación, así si hay que modificar algún punto, no es necesario modificar toda la aplicación, sólo el fichero de la ruta.
 
-Sequelize es uno de los ORM más usados en JavaScript, securizando el acceso a los datos. 
+\begin{lstlisting}[style=ES6, caption={ES6 (ECMAScript-2015) Listing}]
+  require("./app/routes/departamento.routes")(app);
+  require("./app/routes/diapresencial.routes")(app);
+  require("./app/routes/estadodia.routes")(app);
+  require("./app/routes/rol.routes")(app);
+  require("./app/routes/user.routes")(app);
+  require("./app/routes/auth.routes")(app);
+  \end{lstlisting}
+
+  En caso de querer cambiar el puerto, sólo hay que modificar el fichero server.js, para cambiar la constante PORT por el puerto que queramos usar. 
+
+  \begin{lstlisting}[style=ES6, caption={ES6 (ECMAScript-2015) Listing}]
+    // set port, listen for requests
+    const PORT = process.env.PORT || 8080;
+    app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
+  });
+    \end{lstlisting}
+
+Sequelize es uno de los ORM más usados en JavaScript, securizando el acceso a los datos. La configuración se realiza a través de un objeto en el fichero config/db.config.js, la contraseña debe ser la misma que la que se ha configurado en la base de datos.
+\begin{lstlisting}[style=ES6, caption={ES6 (ECMAScript-2015) Listing}]
+  module.exports = {
+    HOST: "mariadb",
+    USER: "root",
+    PASSWORD: "qwerty",
+    DB: "TurnosTeletrabajo",
+    dialect: "mysql",
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000,
+    },
+  };
+  \end{lstlisting}
+Este objeto se importa al inicializar Sequelize:
+\begin{lstlisting}[style=ES6, caption={ES6 (ECMAScript-2015) Listing}]
+  const config = require("../config/db.config.js");
+  const Sequelize = require("sequelize");
+  const sequelize = new Sequelize(config.DB, config.USER, config.PASSWORD, {
+    host: config.HOST,
+    dialect: config.dialect,
+    pool: {
+      max: config.pool.max,
+      min: config.pool.min,
+      acquire: config.pool.acquire,
+      idle: config.pool.idle,
+    },
+  });
+  \end{lstlisting}
+
+La mayoría de la documentación existente en itnernet no usa sus clases, sino que directamente crea objetos. En esta aplicación hemos usado las clases existentens para poder eliminar código duplicado existente en la creación de todos los objetos.
+En el caso de querer modificar algo, por ejemplo, eliminar el id para que el propio nombre fuera la clave principal, sólo tendría que modificar la clase base, no todos los objetos.
+
+Objetos Sequelize:
+Departamento:
+
+\begin{lstlisting}[style=ES6, caption={ES6 (ECMAScript-2015) Listing}]
+module.exports = (sequelize, Sequelize) => {
+  const Departamento = sequelize.define(
+    "departamento",
+    {
+      id_departamento: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      departamento: {
+        type: Sequelize.STRING,
+      },
+    },
+    {
+      // Elimino el cambio de nombre en la tabla
+      freezeTableName: true,
+    }
+  );
+
+  return Departamento;
+};
+\end{lstlisting}
+
+Rol:
+\begin{lstlisting}[style=ES6, caption={ES6 (ECMAScript-2015) Listing}]
+module.exports = (sequelize, Sequelize) => {
+  const Rol = sequelize.define(
+    "rol",
+    {
+      id_rol: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+      },
+      rol: {
+        type: Sequelize.STRING,
+      },
+    },
+    {
+      // Elimino el cambio de nombre en la tabla
+      freezeTableName: true,
+    }
+  );
+
+  return Rol;
+};
+\end{lstlisting}
+Objetos Sequelize:
+Clase base, a la que se le ha añadido un getter:
+\begin{lstlisting}[style=ES6, caption={ES6 (ECMAScript-2015) Listing}]
+  const Sequelize = require("sequelize");
+  class baseIdNombre extends Sequelize.Model {
+    static init(sequelize) {
+      return super.init(
+        {
+          id: {
+            type: Sequelize.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
+          },
+          descripcion: {
+            type: Sequelize.STRING,
+            allowNull: false,
+            unique: true,
+          },
+        },
+        {
+          // Elimino el cambio de nombre en la tabla
+          freezeTableName: true,
+          sequelize,
+        }
+      );
+    }
+    static getId(where) {
+      return this.findOne({
+        where,
+        attributes: ["id"],
+        order: [["createdAt", "DESC"]],
+      });
+    }
+    static getDesc(where) {
+      return this.findOne({
+        where,
+        attributes: ["descripcion"],
+        order: [["createdAt", "DESC"]],
+      });
+    }
+  }
+  module.exports = baseIdNombre;
+\end{lstlisting}
+Departamento:
+\begin{lstlisting}[style=ES6, caption={ES6 (ECMAScript-2015) Listing}]
+  const baseIdNombre = require("./baseIdNombre.js");
+  class Departamento extends baseIdNombre {}
+  module.exports = Departamento;
+\end{lstlisting}
+
+Rol:
+\begin{lstlisting}[style=ES6, caption={ES6 (ECMAScript-2015) Listing}]
+  const baseIdNombre = require("./baseIdNombre.js");
+  class Rol extends baseIdNombre {}
+  module.exports = Rol;
+\end{lstlisting}
+
 JWT es un estándar para propagar la identidad del usuario identificado, necesario para poder realizar los distintos accesos a la API sin necesidad de crear sesiones.
-La información está codificada en objetos JSON. 
-
+La información está codificada en objetos JSON. Usa una cadena para firmar esta información (no va encriptada), en caso de exponer el API se debe cambiar la que está actualmente en el fichero config/auth.config.js:
+\begin{lstlisting}[style=ES6, caption={ES6 (ECMAScript-2015) Listing}]
+  module.exports = {
+    secret: "CambiamePorUnaCadena",
+  };
+\end{lstlisting}
 \section{Entorno cliente}
 
 Se ha usado el framework Quasar, basado en vue, para crear una SPA. 
