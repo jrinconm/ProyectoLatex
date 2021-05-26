@@ -715,15 +715,53 @@ El menú lateral se ha creado como componente, renderizando los puntos de menú 
   </q-item-section>
 </q-item>
 \end{lstlisting}
-
+% Despliegue
 \chapter{Despliegue}
 
-El despliegue se ha realizado en una instancia de Google Cloud, expuesto a internet en la siguiente dirección:
+El despliegue se ha realizado mediante docker-compose en una instancia de Google Cloud, expuesto a internet en la siguiente dirección:
 \url{http://jrincon.eu}.
+
+\section{Configuración de la instancia}
+En primer lugar, tenemos que entrar en \url{https://console.cloud.google.com/}{Google Cloud} con una cuenta de google, nos pedirá que indiquemos el país de procedencia, y que aceptemos las condiciones del servicio.
+Opcionalmente, también podemos elegir si queremos recibir más comunicaciones por parte de google.
+
+Para desplegar la aplicación a través de docker-compose, debemos crear una instancia de una máquina virtual, por lo que en el menú lateral seleccionamos "Compute Engine", que por defecto nos envía a instancias de VM.
+El sistema nos pide que creemos un proyecto (si no tenemos ningún otro) y lo nombremos, en mi caso lo he llamado Turnos de Teletrabajo.
+
+En este momento, si no tenemos saldo en Google Cloud, nos pide que rellenemos los datos personales (y los de una tarjeta bancaria) para crear una cuenta, y nos ofrece crédito para trabajar durante 90 días. 
+Hemos elegido realizar la prueba de 90 días, ya que se comprometen a no cargar nada en la tarjeta sin nuestro consentimiento.
+
+Una vez que hemos creado el proyecto, nos da paso a crear una instancia de máquina virtual para nuestro proyecto. 
+Nos pide nombre de la instancia (yo he dejado el que aparece por defecto), la región y zona dentro de la región donde están ubicados los recursos y la configuración de máquina.
+
+La configuración de la máquina ha sido la más sencilla, e2-micro, con 2 virtual cores y 1 Gb de memoria, tal y conforme indica Google en su documentación, es el ideal para ejecutar aplicaciones pequeñas que no necesitan muchos recursos.
+
+\begin{figure}[h!] % [h!]
+  \centering
+   \includegraphics[scale=0.80]{img/cargas de trabajo.png}
+   \caption{Tipos de máquinas según su uso}
+   \label{fig:cargas}
+ \end{figure}
+
+ En la selección, he elegido abrir el puerto http, para la aplicación web. Si vamos a necesitar acceso a la API, porque usamos la aplicación android o de sobremesa, tendremos que abrir en el firewall el puerto 8080.
+ Actualmente, en reposo, está consumiendo un 9\% de la cpu, y al estar sin uso, prácticamente no escribe en disco ni genera datos por la red.
+
+ \begin{figure}[h!] % [h!]
+  \centering
+   \includegraphics[scale=0.80]{img/cargaGoogleCloud.png}
+   \caption{Carga durante una hora de la web}
+   \label{fig:cargaweb}
+ \end{figure}
 
 \section{Instalación de los archivos}
 
-Pendiente
+Una vez que está creada la instancia, y corriendo, nos podemos conectar a ella a través de ssh. Para ello, sólo tenemos que pulsar el cuadro que pone ssh y se nos abre un navegador con una consola ssh del equipo.
+En este punto, la instalación es igual que en un servidor dedicado o físico dentro de nuestra infraestructura. En la consola, descargamos de github el docker-compose del proyecto \url{https://github.com/jrinconm/docker-turnos/}{docker-turnos}
+Por ejemplo, clonando el repositorio, o directamente con wget. Una vez descargado, al no estar instalado docker-compose, lo vamos a ejecutar dentro de un contenedor a su vez también:
+
+\begin{lstlisting}[language=bash, caption={comando docker para lanzar docker-compose}]
+docker run --rm  -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:$PWD" -w="$PWD"  docker/compose:1.24.0 up -d
+\end{lstlisting}
 
 \chapter{Herramientas de apoyo}
 
