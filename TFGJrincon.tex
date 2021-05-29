@@ -317,7 +317,7 @@ El ritmo de trabajo será de entre 2 o 3 horas diarias, incrementándose hasta u
    \caption{Segundo segmento Gantt}
    \label{fig:Gantt21}
  \end{figure}
-
+ \pagebreak
 \begin{itemize}
    \item Análisis de requisitos  (3 días)  
    \item Diseño y mockups ( 18 días)
@@ -677,11 +677,15 @@ La información está codificada en objetos JSON. Usa una cadena para firmar est
 \end{lstlisting}
 \section{Entorno cliente}
 El código fuente del frontend está alojado en github en la siguiente dirección: \url{https://github.com/jrinconm/TurnosFront}
+
 Se ha usado el framework Quasar, basado en vue, para crear una SPA. 
 
 También nos ha permitido crear la aplicación móvil y la de escritorio. En ambos casos, se ha usado de las librerías auxiliares Capacitor y Electron respectivamente.
+
 Este framework nos permite crear de forma muy rápida interfaces de usuario. 
-Las clases en los componentes Quasar funcionan prácticamente igual que Bootstrap para css, por lo que no ha habido prácticamente curva de aprendizaje.
+
+Las clases para css en los componentes Quasar funcionan prácticamente igual que en Bootstrap ,por lo que no ha habido prácticamente curva de aprendizaje.
+
 A continuación muestro un ejemplo la página de administración, con un diseño de 3 columnas en pc y 1 única en móvil, exactamente igual que se hace en Bootstrap.
 
 \begin{lstlisting}[language=HTML, caption={Template página administración}]
@@ -695,6 +699,7 @@ A continuación muestro un ejemplo la página de administración, con un diseño
    </div>
  </div>
 \end{lstlisting}
+
 Como se puede ver, el marcado de los márgenes y del padding es distinto, puesto que se antepone a la clase la letra q, y después ya se indica si es padding o margin y el tamaño relativo.
 
 Quasar usa vue, por lo que permite la renderización condicional de elementos. A partir del listado anterior, con el siguiente código javascript, nos permite renderizar el componente de edición de tablas para los 3 elementos del array datos.
