@@ -271,14 +271,11 @@ Tendremos como margen 1 o 2 semanas para resolver cualquier desviación sobre la
 
 El ritmo de trabajo será de entre 2 o 3 horas diarias, incrementándose hasta unas posibles 5 o 6 horas los fines de semana. 
 
-
 \begin{figure}[h!] % [h!]
    \includegraphics[width=\linewidth]{img/gantt1.png}
    \caption{Primer segmento Gantt}
    \label{fig:Gantt1}
  \end{figure}
-
-
 
  \begin{figure}[h!] % [h!]
    \includegraphics[width=\linewidth]{img/gantt2.png}
@@ -301,7 +298,7 @@ El ritmo de trabajo será de entre 2 o 3 horas diarias, incrementándose hasta u
       \item Creación modelos sequelize
       \item Implementar autenticación
       \item Creación de rutas
-      \item Pruebas Postman
+      \item Pruebas de funcionamiento (Postman)
    \end{itemize}
    \item Codificación entorno cliente (28 días)
    \begin{itemize}
@@ -310,6 +307,7 @@ El ritmo de trabajo será de entre 2 o 3 horas diarias, incrementándose hasta u
       \item Personalización
       \item Informes
       \item Panel administrador
+      \item Pruebas de funcionamiento
    \end{itemize}
    \item Despliegue ( 7 días)
    \begin{itemize}
@@ -318,13 +316,13 @@ El ritmo de trabajo será de entre 2 o 3 horas diarias, incrementándose hasta u
       \item Despliegue Google Cloud
       \item Pruebas de funcionamiento
    \end{itemize}
-   \item Documentación ( 14 días a lo largo del proyecto)
-   \item Optimización de código (7 días )
+   \item Optimización de código (sin planificar)
    \begin{itemize}
       \item Eliminación de posibles bugs
       \item Eliminación de mensajes en consola
-      \item Optimización de código
+      \item Eliminación de código duplicado 
    \end{itemize}
+   \item Documentación ( 40 días a lo largo del proyecto)
 \end{itemize}
 
 \chapter{Análisis de requisitos}
@@ -857,7 +855,14 @@ Una vez compilado el documento, lo dejaba como un artefacto de esa build, compri
             name: PDF
             path: TFGJrincon.pdf
 \end{lstlisting}
-
+Para realizar las pruebas de funcionamiento del API, se ha usado \href{https://www.postman.com/}{Postman}, creando una colección de consultas para poder repetirlas posteriormente.
+A continuación muestro una consulta en la que se realiza el signin con usuario Pepe y la contraseña azul, obteniendo el jsonwebtoken que se muestra en la imagen.
+\begin{figure}[h!] % [h!]
+  \centering
+   \includegraphics[width=0.60\textwidth]{img/postman.png}
+   \caption{Colección consultas postman}
+   \label{fig:postman}
+ \end{figure}
 Docker y Docker Compose como entorno de virtualización, y en mi perfil del hub tengo las imágenes compiladas para poder desplegarlas de forma ŕapida. 
 Para la realización de los mockups he usado el site \href{https://mockflow.com/app/#Wireframe}{Mockflow}.
 En la parte de los diagramas he usado el site \href{https://lucid.app/}{Lucid}, que anteriomente se llamaba directamente LucidChart, y Visual Paradigm.
