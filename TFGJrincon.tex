@@ -316,12 +316,6 @@ El ritmo de trabajo será de entre 2 o 3 horas diarias, incrementándose hasta u
       \item Despliegue Google Cloud
       \item Pruebas de funcionamiento
    \end{itemize}
-   \item Optimización de código (sin planificar)
-   \begin{itemize}
-      \item Eliminación de posibles bugs
-      \item Eliminación de mensajes en consola
-      \item Eliminación de código duplicado 
-   \end{itemize}
    \item Documentación ( 40 días a lo largo del proyecto)
 \end{itemize}
 
@@ -398,11 +392,20 @@ Finalmente no ha sido el diseño definitivo, puesto que por sencillez de trabajo
 En el diseño físico he incluido funcionalidad de sequelize, que permite automatizar la fecha de creación y modificación de los campos.
 También he añadido como clave primaria un id en todas las tablas, para trabajar de forma más cómoda en la API.
 Por último, he aprovechado también la auto creación de relaciones entre tablas, para que nombrase automáticamente las relaciones.
+
+Según el esquema inicial, el diagrama mysql hubiera sido el siguiente:
 \begin{figure}[h!] % [h!]
    \includegraphics[scale=0.40]{img/EsquemaBBDD.png}
    \caption{Diagrama mysql}
    \label{fig:diagramaMysql}
  \end{figure}
+
+ Al simplificar la base de datos, finalmente se obtiene el siguiente esquema, en el que sólo hay 2 tablas, que se relacionan mediante el id de usuario. 
+ \begin{figure}[h!] % [h!]
+  \includegraphics[scale=0.40]{img/nuevaBBDD.png}
+  \caption{Diagrama mysql final}
+  \label{fig:nuevodiagramaMysql}
+\end{figure}
 
 \section{Orientación a objetos}
 
