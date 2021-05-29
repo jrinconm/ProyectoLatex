@@ -176,63 +176,95 @@ En el apartado de informes, podremos exportar la información a excel, en format
 
 \chapter{Estado del arte}
 
-Se ha creado un microservicio en un contenedor docker basado en node.js , usando el framework express, para comunicar con la base de datos mariadb a través del ORM Sequelize. 
+Se ha creado una API en un contenedor docker basado en node.js, usando el framework express, para comunicar con la base de datos mariadb a través del ORM Sequelize.  
 
-El ORM (object-relational mapping) Sequelize, desde su versión 4, permite el uso de clases ES6, por lo que se ha usado una clase básica con los parámetros comunes, eliminando código duplicado.
+Node.js es un motor de ejecución JavaScript, que se ha aprovechado para sustituir PHP en la parte servidor, abriendo un puerto y respondiendo html directamente, si ser necesario integrarlo en un servidor web. 
 
-Se ha integrado CI/CD en la creación de esta documentación, a través de github actions, compilando el documento al realizar un push en el repositorio \url{https://github.com/jrinconm/ProyectoLatex}.
+El framework express, con miles de métodos de programa de utilidad HTTP y middleware a su disposición, permite la creación de una API sólida de forma rápida y sencilla.
 
-El uso de Sonarqube ha limitado el código duplicado, llegando a ser inexistente en la parte del frontend.
+El ORM (object-relational mapping) Sequelize, desde su versión 4, permite el uso de clases ES6, por lo que se ha usado una clase básica con los parámetros comunes, eliminando código duplicado. 
+Un ORM permite relacionar los objetos con los datos que representa, evitando la contrucción manual de las consultas, facilitando un código limpio.
 
-En el frontend se ha usado el framework Quasar, es una herramienta basada en vue que permite crear interfaces gráficos de forma sencilla.
+Al remodelar la base de datos, tan sólo ha sido necesario cambiar las clases afectadas, añadiendo los campos necesarios, y a través de una migración o un reinicio de la base de datos, dependiendo si tenemos datos, nos modifica las tablas necesarias.
 
-En el despliegue, lo hemos integrado con Docker, que es una virtualización muy ligera, que combinada con docker-compose permite crear el despliegue de la aplicación en múltiples sistemas de forma muy sencilla.
+Se ha usado el cliente API de postman, que permite realizar cualquier tipo de consulta REST, SOAP o GraphQL, permitiendo comprobar de forma visual el objeto json que devuelve una consulta según las rutas que hemos programado.
 
-Google cloud es uno de los servidores donde podemos desplegarlo, con la posibilidad de incluir la aplicación móvil o no, así como en un servidor virtual dedicado (infraestructura propia)
+Se ha integrado CI/CD en la creación de esta documentación, a través de github actions, compilando el documento al realizar un push en el repositorio \url{https://github.com/jrinconm/ProyectoLatex}. Una vez realizada la compilación, nos deja el fichero en el servidor para la descarga.
+
+El uso de Sonarqube, una plataforma para evaluar el código fuente, ha limitado el código duplicado, llegando a ser inexistente en la parte del frontend.
+
+En el frontend se ha usado el framework Quasar, es un framwork basado en vue que permite crear, de forma rápida y sencilla, distintos tipos de aplicaciones:
+
+\begin{itemize}
+  \item SSR (Server-side Rendered App)
+  \item PWAs (Progressive Web App)
+  \item SPAs (Single Page App)
+  \item Mobile Apps (Android, iOS, …) a través de Apache Cordova
+  \item Multi-platform Desktop Apps (usando Electron).
+\end{itemize}
+
+Para la realización de las gráficas, finalmente se ha usado Apexcharts.js frente Chart.js, que era la librería designada inicialmente. La documentación de Apexcharts es más completa, e integra mayor funcionalidad que Chart.js. 
+En la portada de la web de Apexcharts indica que es partner de FusionCharts, una librería de pago, por lo que fue desestimada inicialmente, al presuponer de forma errónea que había pasado a ser de pago también.
+
+En el despliegue, lo hemos integrado con Docker que de forma combinada con docker-compose permite crear el despliegue de la aplicación en múltiples sistemas de forma muy sencilla.
+Docker es una tecnología de creación y gestión de contenedores linux. 
+Un contenedor linux comparte el mismo kernel que el sistema operativo (en el caso de windows, el del subsistema de windows para linux), y permite ejecutar procesos de forma independiente del sistema. 
+Dentro de una imagen de contenedor se deben incluir todas las dependencias de la aplicación, logrando así también independencia de librferías.
+
+No se ha usado buildah y podman, que son los sustitutos dockerless para la creación de imagenes y gestión de contenedores, puesto que podman no tiene un sustituto para docker-compose.
+
+Google cloud es uno de los servidores donde podemos desplegarlo, con la posibilidad de incluir la aplicación móvil o no, así como en un servidor virtual dedicado (infraestructura propia). 
+Permite 3 meses de uso gratuito (limitado a un consumo valorado en 300\$) teniendo una cuenta google, siendo necesario suministrar una tarjeta válida, y todos los clientes obtienen una máquina f1-micro gratuita al mes, por lo que si el consumo de la aplicación no es muy alto, se podría mantener de forma gratuita.
 
 A continuación, los logotipos de las tecnologías usadas:
 
 \begin{figure}[!htb]
-   \minipage{0.32\textwidth}
+   \minipage{0.24\textwidth}
      \includegraphics[width=\linewidth]{img/Node.js_logo.png}
      \caption{Logotipo Node.js}\label{fig:LogoNode}
    \endminipage\hfill
-   \minipage{0.32\textwidth}%
+   \minipage{0.24\textwidth}%
      \includegraphics[width=\linewidth]{img/Sequelize_logo.png}
      \caption{Logotipo Sequelize}\label{fig:LogoSequelize}
    \endminipage
-   \minipage{0.32\textwidth}
+   \minipage{0.24\textwidth}
    \includegraphics[width=\linewidth]{img/mariadb_logo.png}
    \caption{Logotipo MariaDB}\label{fig:LogoMariaDB}
+   \minipage{0.24\textwidth}
+   \includegraphics[width=\linewidth]{img/postman_logo.png}
+   \caption{Logotipo MariaDB}\label{fig:LogoPostman}
  \endminipage\hfill
 \end{figure}
 
 \begin{figure}[!htb]
-   \minipage{0.32\textwidth}
+   \minipage{0.24\textwidth}
      \includegraphics[width=\linewidth]{img/GithubActions-logo.png}
      \caption{Logotipo Github actions}\label{fig:LogoGithub}
    \endminipage\hfill
-   \minipage{0.32\textwidth}
+   \minipage{0.24\textwidth}
      \includegraphics[width=\linewidth]{img/SonarQube_logo.png}
      \caption{Logotipo SonarQube}\label{fig:LogoSonarQube}
    \endminipage\hfill
-   \minipage{0.32\textwidth}%
+   \minipage{0.24\textwidth}%
      \includegraphics[width=\linewidth]{img/Quasar_logo.png}
      \caption{Logotipo Quasar}\label{fig:LogoQuasar}
+  \minipage{0.24\textwidth}%
+  \includegraphics[width=\linewidth]{img/apexcharts_logo.png}
+  \caption{Logotipo Quasar}\label{fig:LogoApexcharts}
    \endminipage
 \end{figure}
 
 
 \begin{figure}[!htb]
-   \minipage{0.32\textwidth}
+   \minipage{0.24\textwidth}
    \includegraphics[width=\linewidth]{img/Moby-logo.png}
    \caption{Logotipo Docker}\label{fig:LogoDocker}
    \endminipage\hfill
-   \minipage{0.32\textwidth}
+   \minipage{0.24\textwidth}
      \includegraphics[width=\linewidth]{img/google_cloud_main.png}
      \caption{Logotipo Google cloud}\label{fig:LogoGcloud}
    \endminipage\hfill
-   \minipage{0.32\textwidth}%
+   \minipage{0.24\textwidth}%
      \includegraphics[width=\linewidth]{img/logo-vmware.jpg}
      \caption{Logotipo Vmware}\label{fig:LogoVmware}
    \endminipage
