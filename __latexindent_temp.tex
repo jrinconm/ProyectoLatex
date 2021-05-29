@@ -760,7 +760,7 @@ También he usado localstorage para almacenar los detalles del usuario, el token
         })
         .catch(err => {
           commit("AUTH_ERROR", err);
-          // if the request fails, remove any possible user token if possible
+      // if the request fails, remove any possible user token if possible
           localStorage.removeItem("user-token"); 
           reject(err);
         });
@@ -871,7 +871,7 @@ Actualmente, Sonarqube le da la máxima calificación a mi código, tanto en bug
 Como curiosidad, integra una utilidad para ver como una ciudad el código, siendo los edificios los ficheros, las manzanas los subdirectorios, de esta forma, de un sólo vistazo, se puede ver qué ficheros son los que contienen más líneas de código, por si es necesario refactorizar.
 \begin{figure}[h!] % [h!]
   \centering
-   \includegraphics[width=0.60\textwidth]{img/calendarioSonarqube.png}
+   \includegraphics[width=0.70\textwidth]{img/calendarioSonarqube.png}
    \caption{Fichero calendario.vue en vista 3d}
    \label{fig:calendariosonar}
  \end{figure}
@@ -899,7 +899,7 @@ Para realizar las pruebas de funcionamiento del API, se ha usado \href{https://w
 A continuación muestro una consulta en la que se realiza el signin con usuario Pepe y la contraseña azul, obteniendo el jsonwebtoken que se muestra en la imagen.
 \begin{figure}[h!] % [h!]
   \centering
-   \includegraphics[width=0.60\textwidth]{img/postman.png}
+   \includegraphics[width=0.80\textwidth]{img/postman.png}
    \caption{Colección consultas postman}
    \label{fig:postman}
  \end{figure}
