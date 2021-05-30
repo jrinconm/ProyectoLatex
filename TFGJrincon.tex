@@ -529,7 +529,7 @@ El código fuente del frontend está alojado en github en la siguiente direcció
 Node.js es un motor de ejecución JavaScript muy ligero, que puede realizar funciones de servidor web. 
 En niveles de carga altos, su rendimiento está por debajo de nginx o apache, pero para las necesidades que tenemos para la API, es rendimiento suficiente y funciona de forma correcta.
 
-Gracias al middleware Express, se ha creado el API de forma simple, dividiendo las rutas en ficheros para modularizar la aplicación, así si hay que modificar algún punto, no es necesario modificar toda la aplicación, sólo el fichero de la ruta.
+Gracias al middleware Express, se ha creado una API de forma simple, dividiendo las rutas en ficheros para modularizar la aplicación, así si hay que modificar algún punto, no es necesario modificar toda la aplicación, sólo el fichero de la ruta.
 
 \begin{lstlisting}[style=ES6, caption={Importación rutas para Express}]
   require("./app/routes/departamento.routes")(app);
@@ -602,9 +602,12 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      departamento: {  type: Sequelize.STRING },
+      departamento: {  
+        type: Sequelize.STRING 
+        },
     },
-    { // Elimino el cambio de nombre en la tabla
+    { 
+      // Elimino el cambio de nombre en la tabla
       freezeTableName: true 
       }
   );
@@ -658,8 +661,7 @@ Clases Sequelize (a la clase base se le ha añadido un getter):
             unique: true,
           },
         },
-        {
-          // Elimino el cambio de nombre en la tabla
+        {          
           freezeTableName: true,
           sequelize,
         }
@@ -667,15 +669,13 @@ Clases Sequelize (a la clase base se le ha añadido un getter):
     }
     static getId(where) {
       return this.findOne({
-        where,
-        attributes: ["id"],
+        where, attributes: ["id"],
         order: [["createdAt", "DESC"]],
       });
     }
     static getDesc(where) {
       return this.findOne({
-        where,
-        attributes: ["descripcion"],
+        where, attributes: ["descripcion"],
         order: [["createdAt", "DESC"]],
       });
     }
@@ -698,7 +698,7 @@ Clases Sequelize (a la clase base se le ha añadido un getter):
 Estas clases se han mostrado a modo de ejemplo, siendo que finalmente las clases que se han implementado son usuario y diapresencial.
 
 JWT es un estándar para propagar la identidad del usuario identificado, necesario para poder realizar los distintos accesos a la API sin necesidad de crear sesiones.
-La información está codificada en objetos JSON. Usa una cadena para firmar esta información (no va encriptada), en caso de exponer el API se debe cambiar la que está actualmente en el fichero config/auth.config.js.
+La información está codificada en objetos JSON. Usa una cadena para firmar esta información (no va encriptada), en caso de exponer la API (el caso más habitual) se debe cambiar la que está actualmente en el fichero config/auth.config.js.
 A continuación, un ejemplo de cadena para firmar el token JWT.
 
 \begin{lstlisting}[style=ES6, caption={Configuración de la cadena para la firma JWT}]
@@ -941,7 +941,7 @@ Una vez compilado el documento, lo dejaba como un artefacto de esa build, compri
             path: TFGJrincon.pdf
 \end{lstlisting}
 \clearpage
-Para realizar las pruebas de funcionamiento del API, se ha usado \href{https://www.postman.com/}{Postman}, creando una colección de consultas para poder repetirlas posteriormente.
+Para realizar las pruebas de funcionamiento de la API, se ha usado \href{https://www.postman.com/}{Postman}, creando una colección de consultas para poder repetirlas posteriormente.
 
 A continuación muestro una consulta en la que se realiza el signin con usuario Pepe y la contraseña azul, obteniendo el jsonwebtoken que se muestra en la imagen.
 
@@ -964,7 +964,7 @@ En la parte de los diagramas se ha usado el site \href{https://lucid.app/}{Lucid
 
 \chapter{Conclusiones}
 
-La combinación de Node.js con Express y sequelize permite crear microservicios de una forma simple, que combinado con la velocidad que de maquetación de quasar, nos permite crear aplicaciones de forma rápida.
+La combinación de Node.js con Express y sequelize permite crear una API de una forma simple, que combinado con la velocidad que de maquetación de Quasar, nos permite crear aplicaciones de forma rápida.
 Si unimos analizadores de código, como Sonarqube, añadimos a la velocidad de creación, seguridad, limpieza y estabilidad. 
 El código lo podemos probar en entorno de pruebas con contenedores docker, que a su vez nos permitirán desplegarlo de forma ágil, tanto en la nube como en nuestra propia infraestructura.
 
