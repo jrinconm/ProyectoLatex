@@ -997,6 +997,17 @@ La combinación de Node.js con Express y sequelize permite crear una API de una 
 Si unimos analizadores de código, como Sonarqube, añadimos a la velocidad de creación, seguridad, limpieza y estabilidad. 
 El código lo podemos probar en entorno de pruebas con contenedores docker, que a su vez nos permitirán desplegarlo de forma ágil, tanto en la nube como en nuestra propia infraestructura.
 
+Personalmente, la elección de javascript para el backend, si bien no lo vimos en entorno servidor, creo que ha sido positiva, puesto que me ha permitido conocer el entorno de Node.js. 
+No he necesitado aprender a usar el lenguaje, puesto que ya lo conocía, y sólo he tenido que leer a documentación existente para crear una API sólida, que si bien puede ser mejorable, es suficiente para el uso requerido.
+
+También estoy contento con la elección de sequelize, puesto que al modificar la estructura de la base de datos, sólo tuve que modificar las clases que representan las tablas en la base de datos. 
+Al cambiar también el nombre de los campos (por ejemplo cambié RolId por Rol), tuve que modificar alguna funcion de los controllers que solicitaba expresamente el campo renombrado, pero con sólo buscar el campo y realziar la sustitución fue suficiente.
+
+Para comprobar que la API funcionaba correctamente, he realizado un uso intensivo de Postman, que una vez configurado con todas las consultas creadas, de una forma muy rápida pude comprobar que devolvía lo esperado.
+Me ha sido expecialmente útil una vez modificada la base de datos, para comprobar que seguía devolviendo y requiriendo la misma información. 
+
+En la parte cliente, 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                BIBLIOGRAFIA                                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
