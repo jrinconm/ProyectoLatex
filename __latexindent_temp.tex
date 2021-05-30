@@ -851,7 +851,9 @@ La configuración de la máquina ha sido la más sencilla, e2-micro, con 2 virtu
    \label{fig:cargas}
  \end{figure}
 
- En la selección, he elegido abrir el puerto http, para la aplicación web. Si vamos a necesitar acceso a la API, porque usamos la aplicación android o de sobremesa, tendremos que abrir en el firewall el puerto 8080.
+ En la selección, es necesario elegir abrir el puerto http, para la aplicación web. Asi mismo, es necesario el acceso a la API, por lo tanto tendremos que abrir en el firewall el puerto 8080. 
+ Momentáneamente es necesario abrir el puerto 8000 para phpmyadmin, para crear e importar la base de datos, si no queremos hacerlo por línea de comandos.
+
  Actualmente, en reposo, está consumiendo un 9\% de la cpu, y al estar sin uso, prácticamente no escribe en disco ni genera datos por la red.
 
  \begin{figure}[h!] % [h!]
@@ -870,8 +872,8 @@ Por ejemplo, clonando el repositorio, o directamente con wget.
 
 Una vez descargado, al no estar instalado docker-compose, lo vamos a ejecutar dentro de un contenedor a su vez también:
 
-\begin{lstlisting}[language=bash, caption={comando docker para lanzar docker-compose}]
-docker run --rm  -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:$PWD"   -w="$PWD"  docker/compose:1.24.0 up
+\begin{lstlisting}[language=bash, caption={Comando docker para lanzar docker-compose}]
+docker run --rm  -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:$PWD"   -w="$PWD"  docker/compose:1.24.0 up \d
 \end{lstlisting}
 Este comando nos levantara tanto los contenedores de la aplicación, como un contenedor puntual de phpmyadmin para que podamos crear la base de datos, restaurar un backup, o modificar lo que creamos conveniente.
 
@@ -883,7 +885,25 @@ Una vez levantado todo el sistema, sólo nos falta comprobar en el panel, cual e
    \label{fig:ipexterna}
  \end{figure}
 
-Los contenedores los podemos personalizar, sobretodo para cambiar las contraseñas y cadenas por defecto, para realizarlo, podemos consultar el \hyperref[chapter:config]{apéndice A}.
+Si queremos eliminar los contenedores, primero debemos pararlos de forma individual, o utilizamos el mismo contenedos con docker-compose que hemos usando anteriormente:
+
+\begin{lstlisting}[language=bash, caption={Comando docker para parar docker-compose}]
+docker run --rm  -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:$PWD"   -w="$PWD"  docker/compose:1.24.0 down
+\end{lstlisting}
+
+Para eliminar las imagenes que se han descargado del repositorio jrincon, pero no la de mariadb ni las que tiene google cloud asociadas a la instancia, podemos ejecutar el siguiente comando:
+
+\begin{lstlisting}[language=bash, caption={Borrado de imágenes con el texto jrincon}]
+  docker images|grep jrincon|awk {'print $3'}|xargs docker image rm
+\end{lstlisting}
+
+En el caso que necesitemos modificar uno de los contenedores, por ejemplo para cambiar las contrañas, sólo tenemos que clonar el respositorio, realizar la edición y dentro del directorio donde está el dockerfile, ejecutar:
+
+\begin{lstlisting}[language=bash, caption={Comando docker para construir una imagen}]
+  docker build  --pull -f "Dockerfile"  "."
+\end{lstlisting}
+
+Lo podemos compilar y nombrar al mismo tiempo, con el parametro -t para ponerle el tag a la imagen compilada. Una vez compilada, podemos hacerle un push para subir la imagen a nuestro repositorio docker.
 
 \chapter{Herramientas de apoyo}
 
@@ -1028,15 +1048,13 @@ El código lo podemos probar en entorno de pruebas con contenedores docker, que 
 %                           APÈNDIXS  (Si n'hi ha!)                           %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\APPENDIX
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                         LA CONFIGURACIO DEL SISTEMA                         %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Configuració del sistema}
-\label{chapter:config}
-Clonado del repo, ficheros a cambiar, contrucción de las imagenes.
+
 
 
 
