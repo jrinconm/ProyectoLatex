@@ -492,7 +492,8 @@ Según el esquema inicial, el diagrama mysql hubiera sido el siguiente:
 
 \section{Tecnologías elegidas y su justificación}
 
-Se ha usado \LaTeX{} para crear la documentación, que está formado por un gran conjunto de macros de TeX, siendo un lenguaje de marcas. Se Ha elegido \LaTeX{} frente a Word o LibreOffice, ya que se conocía el lenguaje con anterioridad, permite automáticamente colorear el código, y la presentación parece más profesional.
+Se ha usado \LaTeX{} para crear la documentación, que está formado por un gran conjunto de macros de TeX, siendo un lenguaje de marcas. 
+Se Ha elegido \LaTeX{} frente a Word o LibreOffice, ya que se conocía el lenguaje con anterioridad, \LaTeX{} permite automáticamente colorear el código, y la presentación parece más profesional.
 
 \begin{figure}[ht!] % [h!]
   \includegraphics[width=0.49\textwidth]{img/LatexCode.png}
@@ -548,7 +549,8 @@ Gracias al middleware Express, se ha creado el API de forma simple, dividiendo l
   });
 \end{lstlisting}
 
-Sequelize es uno de los ORM más usados en JavaScript, securizando el acceso a los datos. La configuración se realiza a través de un objeto en el fichero config/db.config.js, la contraseña debe ser la misma que la que se ha configurado en la base de datos.
+Sequelize es uno de los ORM más usados en JavaScript, securizando el acceso a los datos. 
+La configuración se realiza a través de un objeto en el fichero config/db.config.js, la contraseña debe ser la misma que la que se ha configurado en la base de datos.
 A continuación un ejemplo de la configuración de la base de datos, con una contraseña a modo de ejemplo.
 
 \begin{lstlisting}[style=ES6, caption={Configuración de la BBDD para Sequelize}]
@@ -582,7 +584,9 @@ Este objeto se importa al inicializar Sequelize:
   });
 \end{lstlisting}
 
-La mayoría de la documentación existente en internet no usa sus clases, sino que directamente crea objetos. En esta aplicación hemos usado las clases existentes para poder eliminar código duplicado existente en la creación de todos los objetos.
+La mayoría de la documentación existente en internet no usa sus clases, sino que directamente crea objetos. 
+
+En esta aplicación hemos usado las clases existentes para poder eliminar código duplicado existente en la creación de todos los objetos.
 En el caso de querer modificar algo, por ejemplo, eliminar el id para que el propio nombre fuera la clave principal, sólo tendría que modificar la clase base, no todos los objetos.
 
 Objetos Sequelize:
@@ -635,6 +639,8 @@ module.exports = (sequelize, Sequelize) => {
   return Rol;
 };
 \end{lstlisting}
+\clearpage
+
 Clases Sequelize (a la clase base se le ha añadido un getter):
 
 \begin{lstlisting}[style=ES6, caption={Clase base}]
