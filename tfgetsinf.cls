@@ -372,8 +372,8 @@
 
 %%%%%%%%%
 % Índexs
-%%%%%%%%%
-\newcommand{\makeindexes}{\cleardoublepage\tableofcontents\cleardoublepage
+%%%%%%%%%  \newcommand{\makeindexes}{\cleardoublepage\tableofcontents\cleardoublepage
+\newcommand{\makeindexes}{\clearpage\tableofcontents\cleardoublepage
                           \iflistfigures\listoffigures\fi
                           \iflisttables\listoftables\fi
                           \iflistquadres\listofquadres\fi
