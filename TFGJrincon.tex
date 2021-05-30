@@ -462,6 +462,7 @@ Según el esquema inicial, el diagrama mysql hubiera sido el siguiente:
   \caption{Diagrama mysql final}
   \label{fig:nuevodiagramaMysql}
 \end{figure}
+\clearpage 
 
 \section{Mockups}
 
@@ -601,14 +602,11 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      departamento: {
-        type: Sequelize.STRING,
-      },
+      departamento: {  type: Sequelize.STRING },
     },
-    {
-      // Elimino el cambio de nombre en la tabla
-      freezeTableName: true,
-    }
+    { // Elimino el cambio de nombre en la tabla
+      freezeTableName: true 
+      }
   );
 
   return Departamento;
