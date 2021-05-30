@@ -11,9 +11,9 @@
 \DeclareOption{spanish}{\PassOptionsToPackage{english,catalan,main=spanish}{babel}}
 \DeclareOption{english}{\PassOptionsToPackage{spanish,catalan,main=english}{babel}}
 
-\DeclareOption{listoftables}{\listtablestrue}
+\DeclareOption{listoftables}{\listtablesfalse}
 \DeclareOption{listoffigures}{\listfigurestrue}
-\DeclareOption{listofquadres}{\listquadrestrue}
+\DeclareOption{listofquadres}{\listquadresfalse}
 \DeclareOption{listofalgorithms}{\listalgorithmstrue}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
