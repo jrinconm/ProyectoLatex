@@ -406,7 +406,7 @@ Se ha realizado un diagrama de casos de uso, donde mostramos una vez autenticado
 \chapter{Diseño}
 
 \section{Diseño Conceptual Entidad Relación}
-A partir del análisis de los requisitos, se obttiene el siguiente diseño conceptual E/R.
+A partir del análisis de los requisitos, se obtiene el siguiente diseño conceptual E/R.
 
 \begin{figure}[h!] % [h!]
   \centering
@@ -756,6 +756,13 @@ export default {
 
 Se han definido 2 layouts, uno sin menú lateral, para usar en páginas que no deban tener un menú, por ejemplo la página de login, y otro con un menú lateral con las diversas opciones que puede tener el usuario.
 
+\begin{figure}[ht!] % [h!]
+  \includegraphics[width=0.49\textwidth]{img/loginweb.png}
+  \includegraphics[width=0.49\textwidth]{img/calendarioweb.png}
+  \caption{Pagina de login VS Pagina logueado}
+  \label{fig:loginvscalendario}
+\end{figure}
+
 Para la autenticación se usa, aparte de Axios y de JWT, Vuex para compartir la información de la autenticación, mutaciones para modificar el estado del usuario. 
 \begin{lstlisting}[style=ES6, caption={Estados Vuex autenticación}]
   export const AUTH_REQUEST = state => {
@@ -771,7 +778,6 @@ Para la autenticación se usa, aparte de Axios y de JWT, Vuex para compartir la 
     state.status = "logout";
   };
 \end{lstlisting}
-
 
 También se ha usado localstorage para almacenar los detalles del usuario, el token JWT, para así poder guardar la sesión. A continuación un fragmento del código de login y logout:
 
@@ -813,7 +819,7 @@ También se ha usado localstorage para almacenar los detalles del usuario, el to
 El menú lateral se ha creado como componente, renderizando los puntos de menú de forma condicional al rol que se ha obtenido en el login.
 
 \begin{lstlisting}[style=ES6, caption={Renderización condicional de punto de menú Admin}]
-  <q-item to="/admin" exact v-if="rol > 2">
+  <q-item to="/admin" exact v-if="rol === "admin">
   <q-item-section avatar>
     <q-icon name="admin_panel_settings" />
   </q-item-section>
@@ -823,6 +829,42 @@ El menú lateral se ha creado como componente, renderizando los puntos de menú 
   </q-item-section>
 </q-item>
 \end{lstlisting}
+
+Al existir 3 niveles de acceso, actualmente se obtienen 3 posibles renderizados, si fuera necesario ampliar los niveles de acceso, por ejemplo un rol para el director de personal, se podrían seguir añadiendo puntos de menú comprobando el rol.
+
+\begin{figure}[ht!] % [h!]
+  \includegraphics[width=0.33\textwidth]{img/menubase.png}
+  \includegraphics[width=0.33\textwidth]{img/menuresp.png}
+  \includegraphics[width=0.33\textwidth]{img/menuadmin.png}
+  \caption{Distintas opciones dependiendo del rol}
+  \label{fig:menurol}
+\end{figure}
+
+En la personalización se ha utilizado el componente q-icon-picker, que nos da acceso a los iconos integrados con quasar, para poder usarlos, en este caso, en la personalización de los usuarios. 
+También se ha usado el componente q-color, para dotar de una paleta de colores al usuario, asegurandonos que no se repite ninguno al filtrar la lista de colores que se muestra.
+
+\begin{figure}[ht!] % [h!]
+  \includegraphics[width=0.90\textwidth]{img/menubase.png}
+  \caption{Menú de personalización del icono}
+  \label{fig:menupersonalizacion}
+\end{figure}
+
+El responsable de departamento, tiene a su dispositición estadísticas de día x usuario, usuario x día, total de días que ha trabajado un usuario y el porcentaje de presencializadad por día.
+
+\begin{figure}[ht!] % [h!]
+  \includegraphics[width=0.90\textwidth]{img/informes.png}
+  \caption{Menú de informes}
+  \label{fig:menuinformes}
+\end{figure}
+
+Se ha creado una tabla para gestionar los usuarios, si bien en entornos empresariales no suele ser común realizar el alta de usuarios a mano ( ni el alta automática), se ha dejado para una futura versión el integrar OAUTH  y SSPI.
+
+\begin{figure}[ht!] % [h!]
+  \includegraphics[width=0.60\textwidth]{img/gestionusuarioweb.png}
+  \caption{Tabla de gestión de usuarios}
+  \label{fig:gestionusuarios}
+\end{figure}
+
 % Despliegue
 \chapter{Despliegue}
 
@@ -909,7 +951,7 @@ Para nuestra referencia, en 7 días el crédito no se ha consumido, desde la cre
 
 \begin{figure}[h!] % [h!]
   \centering
-   \includegraphics[width=0.90\textwidth]{img/Credito.png}
+   \includegraphics[width=0.30\textwidth]{img/Credito.png}
    \caption{Crédito restante en google Cloud}
    \label{fig:creditogoogle}
  \end{figure}
@@ -996,6 +1038,17 @@ En la parte de los diagramas se ha usado el site \href{https://lucid.app/}{Lucid
 La combinación de Node.js con Express y sequelize permite crear una API de una forma simple, que combinado con la velocidad que de maquetación de Quasar, nos permite crear aplicaciones de forma rápida.
 Si unimos analizadores de código, como Sonarqube, añadimos a la velocidad de creación, seguridad, limpieza y estabilidad. 
 El código lo podemos probar en entorno de pruebas con contenedores docker, que a su vez nos permitirán desplegarlo de forma ágil, tanto en la nube como en nuestra propia infraestructura.
+
+Personalmente, la elección de javascript para el backend, si bien no lo vimos en entorno servidor, creo que ha sido positiva, puesto que me ha permitido conocer el entorno de Node.js. 
+No he necesitado aprender a usar el lenguaje, puesto que ya lo conocía, y sólo he tenido que leer a documentación existente para crear una API sólida, que si bien puede ser mejorable, es suficiente para el uso requerido.
+
+También estoy contento con la elección de sequelize, puesto que al modificar la estructura de la base de datos, sólo tuve que modificar las clases que representan las tablas en la base de datos. 
+Al cambiar también el nombre de los campos (por ejemplo cambié RolId por Rol), tuve que modificar alguna funcion de los controllers que solicitaba expresamente el campo renombrado, pero con sólo buscar el campo y realziar la sustitución fue suficiente.
+
+Para comprobar que la API funcionaba correctamente, he realizado un uso intensivo de Postman, que una vez configurado con todas las consultas creadas, de una forma muy rápida pude comprobar que devolvía lo esperado.
+Me ha sido expecialmente útil una vez modificada la base de datos, para comprobar que seguía devolviendo y requiriendo la misma información. 
+
+En la parte cliente, 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                BIBLIOGRAFIA                                 %
