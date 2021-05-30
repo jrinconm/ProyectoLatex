@@ -439,7 +439,9 @@ Centre Espec\'ific d'Educaci\'o a Dist\`ancia de la Comunitat Valenciana
 \end{flushright}
 \end{titlepage}}
 
-
+\renewcommand{\cleardoublepage}{\clearpage\if@twoside \ifodd\c@page\else
+\c@page
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
 
 \AtBeginDocument{%
     \frontmatter\m@ketitle\cleardoublepage\thispagestyle{plain}}
