@@ -865,14 +865,18 @@ La configuración de la máquina ha sido la más sencilla, e2-micro, con 2 virtu
 
 \section{Instalación de los archivos}
 
-Una vez que está creada la instancia, y corriendo, nos podemos conectar a ella a través de ssh. Para ello, sólo tenemos que pulsar el cuadro que pone ssh y se nos abre un navegador con una consola ssh del equipo.
-En este punto, la instalación es igual que en un servidor dedicado o físico dentro de nuestra infraestructura. En la consola, descargamos de github el docker-compose del proyecto \href{https://github.com/jrinconm/docker-turnos/}{docker-turnos}
-Por ejemplo, clonando el repositorio, o directamente con wget. Una vez descargado, al no estar instalado docker-compose, lo vamos a ejecutar dentro de un contenedor a su vez también:
+En el momento que está creada la instancia, y corriendo, nos podemos conectar a ella a través de ssh. Para ello, sólo tenemos que pulsar el cuadro que pone ssh y se nos abre un navegador con una consola ssh del equipo.
+
+En este punto, la instalación es igual que en un servidor dedicado o físico dentro de nuestra infraestructura. En la consola, descargamos de github el docker-compose del proyecto \href{https://github.com/jrinconm/docker-turnos/}{docker-turnos}.
+Por ejemplo, clonando el repositorio, o directamente con wget. 
+
+Una vez descargado, al no estar instalado docker-compose, lo vamos a ejecutar dentro de un contenedor a su vez también:
 
 \begin{lstlisting}[language=bash, caption={comando docker para lanzar docker-compose}]
 docker run --rm  -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:$PWD"   -w="$PWD"  docker/compose:1.24.0 up
 \end{lstlisting}
 Este comando nos levantara tanto los contenedores de la aplicación, como un contenedor puntual de phpmyadmin para que podamos crear la base de datos, restaurar un backup, o modificar lo que creamos conveniente.
+
 Una vez levantado todo el sistema, sólo nos falta comprobar en el panel, cual es la dirección ip externa, para comprobar que se ha levantado correctamente nuestra aplicación. Esta dirección se puede comprobar directamente en la instacia de la máquina virtual.
 \begin{figure}[h!] % [h!]
   \centering
@@ -897,22 +901,29 @@ Se ha usado Visual Studio Code como IDE, se ha configurado un workspace con los 
 \end{itemize}
 
 Se ha usado Sonarqube para analizar la calidad del código, me ha ayudado a hacer más seguro el código, eliminando posibles puntos de fallo, así como limpiar código duplicado.
+
 Actualmente, Sonarqube le da la máxima calificación a mi código, tanto en bugs, como en vulnerabilidades, y en el caso del frontend de líneas duplicadas.
+
 \begin{figure}[h!] % [h!]
   \centering
    \includegraphics[width=0.90\textwidth]{img/estadosonar.png}
    \caption{Analisis del código por Sonarqube}
    \label{fig:estadosonar}
  \end{figure}
+
 Como curiosidad, integra una utilidad para ver como una ciudad el código, siendo los edificios los ficheros, las manzanas los subdirectorios, de esta forma, de un sólo vistazo, se puede ver qué ficheros son los que contienen más líneas de código, por si es necesario refactorizar.
+
 \begin{figure}[h!] % [h!]
   \centering
    \includegraphics[width=0.70\textwidth]{img/calendarioSonarqube.png}
    \caption{Fichero calendario.vue en vista 3d}
    \label{fig:calendariosonar}
  \end{figure}
+
 También se ha usado git para el control de versiones, siendo Github la plataforma usada. Dentro de esta plataforma, tenemos un componente CI/CD que lo han llamado Github Actions, que he empleado para compilar el código látex según iba realizando los commits.
+
 Una vez compilado el documento, lo dejaba como un artefacto de esa build, comprimido en un zip. 
+
 \begin{lstlisting}[style=ES6, caption={Configuración action github}]
   name: Build LaTeX document
   on: [push]
@@ -931,16 +942,22 @@ Una vez compilado el documento, lo dejaba como un artefacto de esa build, compri
             name: PDF
             path: TFGJrincon.pdf
 \end{lstlisting}
+
 Para realizar las pruebas de funcionamiento del API, se ha usado \href{https://www.postman.com/}{Postman}, creando una colección de consultas para poder repetirlas posteriormente.
+
 A continuación muestro una consulta en la que se realiza el signin con usuario Pepe y la contraseña azul, obteniendo el jsonwebtoken que se muestra en la imagen.
+
 \begin{figure}[h!] % [h!]
   \centering
    \includegraphics[width=0.80\textwidth]{img/postman.png}
    \caption{Colección consultas postman}
    \label{fig:postman}
  \end{figure}
+
 Se ha elegido Docker y Docker Compose como entorno de virtualización, y en mi perfil del hub están las imágenes compiladas para poder desplegarlas de forma ŕapida. 
+
 Para la realización de los mockups se ha usado el site \href{https://mockflow.com/app/#Wireframe}{Mockflow}.
+
 En la parte de los diagramas se ha usado el site \href{https://lucid.app/}{Lucid}, que anteriomente se llamaba directamente LucidChart, y Visual Paradigm.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
