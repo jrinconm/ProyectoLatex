@@ -779,7 +779,9 @@ Para la autenticación se usa, aparte de Axios y de JWT, Vuex para compartir la 
   };
 \end{lstlisting}
 
-También se ha usado localstorage para almacenar los detalles del usuario, el token JWT, para así poder guardar la sesión. A continuación un fragmento del código de login y logout:
+También se ha usado localstorage para almacenar los detalles del usuario, el token JWT, para así poder guardar la sesión. 
+\clearpage
+A continuación un fragmento del código de login y logout:
 
 \begin{lstlisting}[style=ES6, caption={Dispatch de una acción Vuex en el login}]
   import { api } from "boot/axios";
@@ -841,6 +843,7 @@ Al existir 3 niveles de acceso, actualmente se obtienen 3 posibles renderizados,
 \end{figure}
 
 En la personalización se ha utilizado el componente q-icon-picker, que nos da acceso a los iconos integrados con quasar, para poder usarlos, en este caso, en la personalización de los usuarios. 
+
 También se ha usado el componente q-color, para dotar de una paleta de colores al usuario, asegurandonos que no se repite ninguno al filtrar la lista de colores que se muestra.
 
 \begin{figure}[ht!] % [h!]
@@ -849,7 +852,9 @@ También se ha usado el componente q-color, para dotar de una paleta de colores 
   \label{fig:menupersonalizacion}
 \end{figure}
 
-El responsable de departamento, tiene a su dispositición estadísticas de día x usuario, usuario x día, total de días que ha trabajado un usuario y el porcentaje de presencializadad por día.
+El responsable de departamento, tiene a su dispositición estadísticas de día x usuario, usuario x día, total de días que ha trabajado un usuario y el porcentaje de presencializadad por día. 
+
+Para la generación de las gŕaficas, se ha utlizado Vue-ApexCharts, que es un componente generado en base a la librería Apexcharts, librería que permite generar gráficas en múltiples lenguajes de programación.
 
 \begin{figure}[ht!] % [h!]
   \includegraphics[width=0.90\textwidth]{img/informes.png}
@@ -858,6 +863,9 @@ El responsable de departamento, tiene a su dispositición estadísticas de día 
 \end{figure}
 
 Se ha creado una tabla para gestionar los usuarios, si bien en entornos empresariales no suele ser común realizar el alta de usuarios a mano ( ni el alta automática), se ha dejado para una futura versión el integrar OAUTH  y SSPI.
+Para generar la tabla, se ha usado el componente qtable, creando el cuerpo de la tabla a mano para poder insertar componentes q-popup-edit para modificar los datos. 
+
+Finalmente se ha desestimado la grabación inmediata al editar un campo, requiriendo que se valide la información mediante el botón Actualizar.
 
 \begin{figure}[ht!] % [h!]
   \includegraphics[width=0.60\textwidth]{img/gestionusuarioweb.png}
