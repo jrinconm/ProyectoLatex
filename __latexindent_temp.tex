@@ -209,6 +209,7 @@ Para la realización de las gráficas, finalmente se ha usado Apexcharts.js fren
 En la portada de la web de Apexcharts indica que es partner de FusionCharts, una librería de pago, por lo que fue desestimada inicialmente, al presuponer de forma errónea que había pasado a ser de pago también.
 
 En el despliegue, lo hemos integrado con Docker que de forma combinada con docker-compose permite crear el despliegue de la aplicación en múltiples sistemas de forma muy sencilla.
+
 Docker es una tecnología de creación y gestión de contenedores linux. 
 Un contenedor linux comparte el mismo kernel que el sistema operativo (en el caso de windows, el del subsistema de windows para linux), y permite ejecutar procesos de forma independiente del sistema. 
 Dentro de una imagen de contenedor se deben incluir todas las dependencias de la aplicación, logrando así también independencia de librferías.
@@ -216,7 +217,8 @@ Dentro de una imagen de contenedor se deben incluir todas las dependencias de la
 No se ha usado buildah y podman, que son los sustitutos dockerless para la creación de imagenes y gestión de contenedores, puesto que podman no tiene un sustituto para docker-compose.
 
 Google cloud es uno de los servidores donde podemos desplegarlo, con la posibilidad de incluir la aplicación móvil o no, así como en un servidor virtual dedicado (infraestructura propia). 
-Permite 3 meses de uso gratuito (limitado a un consumo valorado en 300 dolares) teniendo una cuenta google, siendo necesario suministrar una tarjeta válida, y todos los clientes obtienen una máquina f1-micro gratuita al mes, por lo que si el consumo de la aplicación no es muy alto, se podría mantener de forma gratuita.
+
+Una nueva cuenta de Google cloud tiene 3 meses de uso gratuito (limitado a un consumo valorado en 300 dolares) para evaluar el servicio, siendo necesario suministrar una tarjeta válida, y todos los clientes obtienen una máquina f1-micro gratuita al mes ubicada en america, por lo que si el consumo de la aplicación no es muy alto, se podría mantener de forma gratuita.
 
 A continuación, los logotipos de las tecnologías usadas:
 
@@ -404,18 +406,26 @@ Se ha realizado un diagrama de casos de uso, donde mostramos una vez autenticado
 \chapter{Diseño}
 
 \section{Diseño Conceptual Entidad Relación}
-A partir del análisis de los requisitos, obtenemos el siguiente diseño conceptual E/R.
+A partir del análisis de los requisitos, se obttiene el siguiente diseño conceptual E/R.
 
 \begin{figure}[h!] % [h!]
   \centering
-   \includegraphics[scale=0.80]{img/EntidadRelacion.png}
+   \includegraphics[scale=0.60]{img/EntidadRelacion.png}
    \caption{Diagrama E/R}
    \label{fig:diagramaer}
  \end{figure}
 
+ Finalmente, se ha cambiado el diseño de forma que Tipo y Departamento son atributos de Usuario, creando una única relación entre el usuario y los días que trabaja de forma presencial.
+ \begin{figure}[h!] % [h!]
+  \centering
+   \includegraphics[scale=0.60]{img/DiagramaERFinal.png}
+   \caption{Diagrama E/R}
+   \label{fig:diagramaerfinal}
+ \end{figure}
+
+
 \section{Diseño Lógico Relacional o Paso a tablas}
-Siguiendo el anterior esquema E/R, hemos pasado a tablas las entidades y relaciones.
-Finalmente no ha sido el diseño definitivo, puesto que por sencillez de trabajo, he decidido asignar una clave primaria distinta a la que sale naturalmente.
+Siguiendo el esquema E/R inicial, el paso a tablas de las entidades y relaciones sería el siguiente:
 
 \begin{figure}[h!] % [h!]
   \includegraphics[width=\linewidth]{img/pasotablas.png}
@@ -423,10 +433,20 @@ Finalmente no ha sido el diseño definitivo, puesto que por sencillez de trabajo
   \label{fig:diagramalr}
 \end{figure}
 
+Con la simplificación, el diseño quedaría de la siguiente forma:
+
+\begin{figure}[h!] % [h!]
+  \includegraphics[width=\linewidth]{img/DiagramaBBDDfinal.png}
+  \caption{Diagrama Lógico Relacional final}
+  \label{fig:diagramalrfinal}
+\end{figure}
+
+Este no ha sido el diseño definitivo, puesto que por sencillez de trabajo, se ha decidido asignar una clave primaria distinta a la que sale naturalmente.
+
 \section{Diseño Físico o Diagrama Mysql}
-En el diseño físico he incluido funcionalidad de sequelize, que permite automatizar la fecha de creación y modificación de los campos.
-También he añadido como clave primaria un id en todas las tablas, para trabajar de forma más cómoda en la API.
-Por último, he aprovechado también la auto creación de relaciones entre tablas, para que nombrase automáticamente las relaciones.
+En el diseño físico se ha incluido funcionalidad de sequelize, que permite automatizar la fecha de creación y modificación de los campos.
+También se ha añadido como clave primaria un id en todas las tablas, para trabajar de forma más cómoda en la API.
+Por último, se ha aprovechado también la auto creación de relaciones entre tablas, para que nombrase automáticamente las relaciones.
 
 Según el esquema inicial, el diagrama mysql hubiera sido el siguiente:
 \begin{figure}[h!] % [h!]
@@ -435,19 +455,11 @@ Según el esquema inicial, el diagrama mysql hubiera sido el siguiente:
    \label{fig:diagramaMysql}
  \end{figure}
 
- Al simplificar la base de datos, finalmente se obtiene el siguiente esquema, en el que sólo hay 2 tablas, que se relacionan mediante el id de usuario. 
+ Al simplificar la base de datos, y creando una clave primaria numerica id, finalmente se obtiene el siguiente esquema, en el que sólo hay 2 tablas, que se relacionan mediante el id de usuario. 
  \begin{figure}[h!] % [h!]
   \includegraphics[scale=0.40]{img/nuevaBBDD.png}
   \caption{Diagrama mysql final}
   \label{fig:nuevodiagramaMysql}
-\end{figure}
-
-\section{Orientación a objetos}
-
-\begin{figure}[h!] % [h!]
-  \includegraphics[width=\linewidth]{img/Clases sequelize.png}
-  \caption{Clases Sequelize}
-  \label{fig:clasesSequelize}
 \end{figure}
 
 \section{Mockups}
@@ -479,20 +491,20 @@ Según el esquema inicial, el diagrama mysql hubiera sido el siguiente:
 
 \section{Tecnologías elegidas y su justificación}
 
-Se ha usado \LaTeX{} para crear la documentación, que está formado por un gran conjunto de macros de TeX, siendo un lenguaje de marcas. He elegido \LaTeX{} frente a Word o LibreOffice, ya que conocía el lenguaje, me permitía automáticamente colorear el código, y la presentación me parece más profesional.
+Se ha usado \LaTeX{} para crear la documentación, que está formado por un gran conjunto de macros de TeX, siendo un lenguaje de marcas. Se Ha elegido \LaTeX{} frente a Word o LibreOffice, ya que se conocía el lenguaje con anterioridad, permite automáticamente colorear el código, y la presentación parece más profesional.
 
 \begin{figure}[ht!] % [h!]
   \includegraphics[width=0.49\textwidth]{img/LatexCode.png}
   \includegraphics[width=0.49\textwidth]{img/LatexCompilado.png}
   \caption{Codigo fuente VS salida compilada}
-  \label{fig:VistaMVL}
+  \label{fig:Latex}
 \end{figure}
 
-Se ha usado tanto para el frontend como para el backend el lenguaje Javascript, unificando ambos en un único lenguaje, facilitando el mantenimiento y el desarrollo al sólo tener que usar un único lenguaje.
+Se ha programado en JavaScript tanto el frontend como el backend, facilitando tanto el mantenimiento como el desarrollo al unificar la programación en un único lenguaje.
 
 En backend se ha usado la combinación de Node.js como motor de ejecución de javascript y Express como framework web, siendo una combinación muy usada para crear REST API.
 
-Para el acceso a la base de datos he optado por usar el ORM Sequelize, que conjuntamente con el uso de las promesas de javascript dota de funcionamiento ininterrumpido el backend. 
+Para el acceso a la base de datos se ha optado por usar el ORM Sequelize, que conjuntamente con el uso de las promesas de javascript dota de funcionamiento ininterrumpido el backend. 
 También realiza la función de prevenir la inyección de sql, si bien es cierto que en Sequelize 3.x y 5.x se descubrieron unas vulnerabilidades que permitían inyectar código sql en mariadb, se parchearon de forma definitiva en la versión 5.15.1, en el proyecto se ha usado la versión 6.6.2
 
 Para la gestión de accesos y contraseñas se ha usado el paquete node jsonwebtoken (JWT), que es componente de uso común para gestionar las sesiones entre cliente y servidor, y para encriptar la contraseña se ha usado el módulo bcrypt.
@@ -503,7 +515,7 @@ Se ha usado la librería QCalendar de Quasar, que dota de funciones de fecha/hor
 Para el acceso a la api, se ha usado axios, que es el módulo que recomienda Quasar para las peticiones Ajax. Se ha usado Vuex para almacenar el estado de la autenticación.
 En la personalización de los usuarios adopté el módulo qiconpicker para elegir el icono personal y vue-html2pdf para imprimir el calendario. Vue-html2pdf es un componente basado en html2pdf, que te permite elegir el componente vue a imprimir directamente, su funcionalidad prácticamente es la misma que html2pdf.
 
-He usado imágenes docker compatibles tanto con windows como con linux. Para esto se ha tenido que realizar algún sacrificio, como no usar el cron de linux, pero la aplicación completa puede correr en ambos sistemas. Posiblemente funcione en macOS, pero no ha sido posible probarlo.
+Se han usado imágenes docker compatibles tanto con windows como con linux. Para esto se ha tenido que realizar algún sacrificio, como no usar el cron de linux, pero la aplicación completa puede correr en ambos sistemas. Posiblemente funcione en macOS, pero no ha sido posible probarlo.
 Se puede usar tanto el docker-compose suministrado como levantar los distintos contenedores en equipos distintos, sólo necesario configurar el fichero de cliente, así se puede desplegar prácticamente sin esfuerzo, a través de los contenedores ya creados desde dockerhub , o creándolos a través de sus fuentes de github. 
 
 Se ha usado yaml para el fichero de configuración de docker-compose y las acciones de github, no se ha podido elegir json ni otras alternativas, al ser el formato elegido por docker y github. 
@@ -756,7 +768,7 @@ Para la autenticación se usa, aparte de Axios y de JWT, Vuex para compartir la 
 \end{lstlisting}
 
 
-También he usado localstorage para almacenar los detalles del usuario, el token JWT, para así poder guardar la sesión. A continuación un fragmento del código de login y logout:
+También se ha usado localstorage para almacenar los detalles del usuario, el token JWT, para así poder guardar la sesión. A continuación un fragmento del código de login y logout:
 
 \begin{lstlisting}[style=ES6, caption={Dispatch de una acción Vuex en el login}]
   import { api } from "boot/axios";
@@ -817,13 +829,13 @@ En primer lugar, tenemos que entrar en \href{https://console.cloud.google.com/}{
 Opcionalmente, también podemos elegir si queremos recibir más comunicaciones por parte de google.
 
 Para desplegar la aplicación a través de docker-compose, debemos crear una instancia de una máquina virtual, por lo que en el menú lateral seleccionamos "Compute Engine", que por defecto nos envía a instancias de VM.
-El sistema nos pide que creemos un proyecto (si no tenemos ningún otro) y lo nombremos, en mi caso lo he llamado Turnos de Teletrabajo.
+El sistema nos pide que creemos un proyecto (si no tenemos ningún otro) y lo nombremos, en mi caso se ha elegido Turnos de Teletrabajo.
 
 En este momento, si no tenemos saldo en Google Cloud, nos pide que rellenemos los datos personales (y los de una tarjeta bancaria) para crear una cuenta, y nos ofrece crédito para trabajar durante 90 días. 
 Hemos elegido realizar la prueba de 90 días, ya que se comprometen a no cargar nada en la tarjeta sin nuestro consentimiento.
 
 Una vez que hemos creado el proyecto, nos da paso a crear una instancia de máquina virtual para nuestro proyecto. 
-Nos pide nombre de la instancia (yo he dejado el que aparece por defecto), la región y zona dentro de la región donde están ubicados los recursos y la configuración de máquina.
+Nos pide nombre de la instancia (se ha dejado el que aparece por defecto), la región y zona dentro de la región donde están ubicados los recursos y la configuración de máquina.
 
 La configuración de la máquina ha sido la más sencilla, e2-micro, con 2 virtual cores y 1 Gb de memoria, tal y conforme indica Google en su documentación, es el ideal para ejecutar aplicaciones pequeñas que no necesitan muchos recursos.
 
@@ -851,7 +863,7 @@ En este punto, la instalación es igual que en un servidor dedicado o físico de
 Por ejemplo, clonando el repositorio, o directamente con wget. Una vez descargado, al no estar instalado docker-compose, lo vamos a ejecutar dentro de un contenedor a su vez también:
 
 \begin{lstlisting}[language=bash, caption={comando docker para lanzar docker-compose}]
-docker run --rm  -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:$PWD"   -w="$PWD"  docker/compose:1.24.0 up -d
+docker run --rm  -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:$PWD"   -w="$PWD"  docker/compose:1.24.0 up
 \end{lstlisting}
 Este comando nos levantara tanto los contenedores de la aplicación, como un contenedor puntual de phpmyadmin para que podamos crear la base de datos, restaurar un backup, o modificar lo que creamos conveniente.
 Una vez levantado todo el sistema, sólo nos falta comprobar en el panel, cual es la dirección ip externa, para comprobar que se ha levantado correctamente nuestra aplicación. Esta dirección se puede comprobar directamente en la instacia de la máquina virtual.
@@ -877,7 +889,7 @@ Se ha usado Visual Studio Code como IDE, se ha configurado un workspace con los 
   \item Vetur. Añade intellisense Vue.
 \end{itemize}
 
-He usado Sonarqube para analizar la calidad del código, me ha ayudado a hacer más seguro el código, eliminando posibles puntos de fallo, así como limpiar código duplicado.
+Se ha usado Sonarqube para analizar la calidad del código, me ha ayudado a hacer más seguro el código, eliminando posibles puntos de fallo, así como limpiar código duplicado.
 Actualmente, Sonarqube le da la máxima calificación a mi código, tanto en bugs, como en vulnerabilidades, y en el caso del frontend de líneas duplicadas.
 \begin{figure}[h!] % [h!]
   \centering
@@ -920,9 +932,9 @@ A continuación muestro una consulta en la que se realiza el signin con usuario 
    \caption{Colección consultas postman}
    \label{fig:postman}
  \end{figure}
-Docker y Docker Compose como entorno de virtualización, y en mi perfil del hub tengo las imágenes compiladas para poder desplegarlas de forma ŕapida. 
-Para la realización de los mockups he usado el site \href{https://mockflow.com/app/#Wireframe}{Mockflow}.
-En la parte de los diagramas he usado el site \href{https://lucid.app/}{Lucid}, que anteriomente se llamaba directamente LucidChart, y Visual Paradigm.
+Se ha elegido Docker y Docker Compose como entorno de virtualización, y en mi perfil del hub están las imágenes compiladas para poder desplegarlas de forma ŕapida. 
+Para la realización de los mockups se ha usado el site \href{https://mockflow.com/app/#Wireframe}{Mockflow}.
+En la parte de los diagramas se ha usado el site \href{https://lucid.app/}{Lucid}, que anteriomente se llamaba directamente LucidChart, y Visual Paradigm.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                 CONCLUSIONS                                 %
