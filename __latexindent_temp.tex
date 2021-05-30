@@ -47,7 +47,7 @@
          de teletrabajo}
 \author{Julián Rincón Morales}
 \tutor{Pau Miñana Climent}
-\curs{2020-2021}
+\curs{2020-2021} Periodo Marzo/Junio
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                     PARAULES CLAU/PALABRAS CLAVE/KEY WORDS                  %
@@ -100,7 +100,7 @@ El gestor del departamento puede obtener un informe con gráficos del personal q
 
 El administrador de la aplicación tiene un interfaz para poder modificar los valores de la aplicación, y obtener un listado de las fechas y usuarios trabajando de forma presencial.
 
-Se puede despleguar en la nube de google, por lo que se puede tener acceso desde cualquier localización, sin necesidad de invertir en infraestructura dedicada.
+Se puede desplegar en la nube de Google, por lo que se puede tener acceso desde cualquier localización, sin necesidad de invertir en infraestructura dedicada.
 
 
 \end{abstract}
@@ -120,7 +120,7 @@ The department manager can obtain a report with graphs of the people he manages 
 
 The application manager has an interface to be able to modify the application settings and obtain a list of dates and users working in person.
 
-The application can be deployed in the google cloud, so it can be accessed from any location, without the need to invest in dedicated infrastructure.
+The application can be deployed in Google's cloud, so it can be accessed from any location, without the need to invest in dedicated infrastructure.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -147,7 +147,7 @@ y otras áreas que si bien pueden desarrollar su trabajo de forma remota, hay oc
 El personal asignado al área de microinformática, por ejemplo, es imprescindible que un par de personas estén de forma presencial, puesto que si es necesario sustituir un equipo, no se puede hacer de forma remota.
 
 También es posible que no se distribuyan de forma equitativa los turnos, pudiendo generar malestar entre los compañeros, y si no está la información visible de forma pública, es posible que existan sospechas infundadas de algún tipo de discriminación hacia algún trabajador.
-Si hacemos públicos los turnos, para que los confirmen y revisen con anterioridad, cualquiero error puntual es fácil de corregir si es notificado con la suficiente antelación.
+Si hacemos públicos los turnos, para que los confirmen y revisen con anterioridad, cualquier error puntual es fácil de corregir si es notificado con la suficiente antelación.
 
 Por otro lado, teniendo las fechas trabajadas de forma presencial en una base de datos, es muy sencillo generar informes para comprobar si si existe gente que está muy por debajo de la media, si hay departamentos que tienen personal de forma presencial por encima de sus necesidades o simplemente, sacar estadísticas de presencialidad.
 
@@ -163,7 +163,7 @@ También es una utilidad para dotar a los responsables de los departamentos esta
 
 Otro objetivo importante, es que los trabajadores puedan consultar de forma rápida que días marcaron como presenciales, el poder guardarse una copia de los turnos del mes para poder consultarlo con posterioridad.
 
-Aparte, teniendo visibles los turnos de los compañeros, si ya están confirmados los días presenciales, y surge algún impresvisto, pueden hablar directamente con un compañero para pedir cambiar el turno directamente.
+Aparte, teniendo visibles los turnos de los compañeros, si ya están confirmados los días presenciales, y surge algún imprevisto, pueden hablar directamente con un compañero para pedir cambiar el turno directamente.
 
 En el apartado de informes, podremos exportar la información a excel, en formato de tabla.
 
@@ -185,7 +185,7 @@ Node.js es un motor de ejecución JavaScript, que se ha aprovechado para sustitu
 El framework express, con miles de métodos de programa de utilidad HTTP y middleware a su disposición, permite la creación de una API sólida de forma rápida y sencilla.
 
 El ORM (object-relational mapping) Sequelize, desde su versión 4, permite el uso de clases ES6, por lo que se ha usado una clase básica con los parámetros comunes, eliminando código duplicado. 
-Un ORM permite relacionar los objetos con los datos que representa, evitando la contrucción manual de las consultas, facilitando un código limpio.
+Un ORM permite relacionar los objetos con los datos que representa, evitando la construcción manual de las consultas, facilitando un código limpio.
 
 Al remodelar la base de datos, tan sólo ha sido necesario cambiar las clases afectadas, añadiendo los campos necesarios, y a través de una migración o un reinicio de la base de datos, dependiendo si tenemos datos, nos modifica las tablas necesarias.
 
@@ -195,7 +195,7 @@ Se ha integrado CI/CD en la creación de esta documentación, a través de githu
 
 El uso de Sonarqube, una plataforma para evaluar el código fuente, ha limitado el código duplicado, llegando a ser inexistente en la parte del frontend.
 
-En el frontend se ha usado el framework Quasar, es un framwork basado en vue que permite crear, de forma rápida y sencilla, distintos tipos de aplicaciones:
+En el frontend se ha usado el framework Quasar, es un framework basado en vue que permite crear, de forma rápida y sencilla, distintos tipos de aplicaciones:
 
 \begin{itemize}
   \item SSR (Server-side Rendered App)
@@ -212,13 +212,13 @@ En el despliegue, lo hemos integrado con Docker que de forma combinada con docke
 
 Docker es una tecnología de creación y gestión de contenedores linux. 
 Un contenedor linux comparte el mismo kernel que el sistema operativo (en el caso de windows, el del subsistema de windows para linux), y permite ejecutar procesos de forma independiente del sistema. 
-Dentro de una imagen de contenedor se deben incluir todas las dependencias de la aplicación, logrando así también independencia de librferías.
+Dentro de una imagen de contenedor se deben incluir todas las dependencias de la aplicación, logrando así también independencia de librerías.
 
-No se ha usado buildah y podman, que son los sustitutos dockerless para la creación de imagenes y gestión de contenedores, puesto que podman no tiene un sustituto para docker-compose.
+No se ha usado buildah y podman, que son los sustitutos dockerless para la creación de imágenes y gestión de contenedores, puesto que podman no tiene un sustituto para docker-compose.
 
-Google cloud es uno de los servidores donde podemos desplegarlo, con la posibilidad de incluir la aplicación móvil o no, así como en un servidor virtual dedicado (infraestructura propia). 
+Google Cloud es uno de los servidores donde podemos desplegarlo, con la posibilidad de incluir la aplicación móvil o no, así como en un servidor virtual dedicado (infraestructura propia). 
 
-Una nueva cuenta de Google cloud tiene 3 meses de uso gratuito (limitado a un consumo valorado en 300 dolares) para evaluar el servicio, siendo necesario suministrar una tarjeta válida, y todos los clientes obtienen una máquina f1-micro gratuita al mes ubicada en america, por lo que si el consumo de la aplicación no es muy alto, se podría mantener de forma gratuita.
+Una nueva cuenta de Google Cloud tiene 3 meses de uso gratuito (limitado a un consumo valorado en 300 dolares) para evaluar el servicio, siendo necesario suministrar una tarjeta válida, y todos los clientes obtienen una máquina f1-micro gratuita al mes ubicada en América, por lo que si el consumo de la aplicación no es muy alto, se podría mantener de forma gratuita.
 
 A continuación, los logotipos de las tecnologías usadas:
 
@@ -260,7 +260,7 @@ A continuación, los logotipos de las tecnologías usadas:
   \endminipage\hfill
   \minipage{0.19\textwidth}
      \includegraphics[width=\linewidth]{img/google_cloud_main.png}
-     \caption{Logotipo Google cloud}\label{fig:LogoGcloud}
+     \caption{Logotipo Google Cloud}\label{fig:LogoGcloud}
   \endminipage\hfill
   \minipage{0.19\textwidth}%
      \includegraphics[width=\linewidth]{img/logo-vmware.jpg}
@@ -456,7 +456,7 @@ Según el esquema inicial, el diagrama mysql hubiera sido el siguiente:
    \label{fig:diagramaMysql}
  \end{figure}
 
- Al simplificar la base de datos, y creando una clave primaria numerica id, finalmente se obtiene el siguiente esquema, en el que sólo hay 2 tablas, que se relacionan mediante el id de usuario. 
+ Al simplificar la base de datos, y creando una clave primaria numérica id, finalmente se obtiene el siguiente esquema, en el que sólo hay 2 tablas, que se relacionan mediante el id de usuario. 
  \begin{figure}[h!] % [h!]
   \includegraphics[scale=0.40]{img/nuevaBBDD.png}
   \caption{Diagrama mysql final}
@@ -499,7 +499,7 @@ Se Ha elegido \LaTeX{} frente a Word o LibreOffice, ya que se conocía el lengua
 \begin{figure}[ht!] % [h!]
   \includegraphics[width=0.49\textwidth]{img/LatexCode.png}
   \includegraphics[width=0.49\textwidth]{img/LatexCompilado.png}
-  \caption{Codigo fuente VS salida compilada}
+  \caption{Código fuente VS salida compilada}
   \label{fig:Latex}
 \end{figure}
 
@@ -585,7 +585,7 @@ Este objeto se importa al inicializar Sequelize:
   });
 \end{lstlisting}
 
-La mayoría de la documentación existente en internet no usa sus clases, sino que directamente crea objetos. 
+La mayoría de la documentación existente en Internet no usa sus clases, sino que directamente crea objetos. 
 
 En esta aplicación hemos usado las clases existentes para poder eliminar código duplicado existente en la creación de todos los objetos.
 En el caso de querer modificar algo, por ejemplo, eliminar el id para que el propio nombre fuera la clave principal, sólo tendría que modificar la clase base, no todos los objetos.
@@ -759,7 +759,7 @@ Se han definido 2 layouts, uno sin menú lateral, para usar en páginas que no d
 \begin{figure}[ht!] % [h!]
   \includegraphics[width=0.49\textwidth]{img/loginweb.png}
   \includegraphics[width=0.49\textwidth]{img/calendarioweb.png}
-  \caption{Pagina de login VS Pagina logueado}
+  \caption{Página de login VS Página ya identificado}
   \label{fig:loginvscalendario}
 \end{figure}
 
@@ -844,7 +844,7 @@ Al existir 3 niveles de acceso, actualmente se obtienen 3 posibles renderizados,
 
 En la personalización se ha utilizado el componente q-icon-picker, que nos da acceso a los iconos integrados con quasar, para poder usarlos, en este caso, en la personalización de los usuarios. 
 
-También se ha usado el componente q-color, para dotar de una paleta de colores al usuario, asegurandonos que no se repite ninguno al filtrar la lista de colores que se muestra.
+También se ha usado el componente q-color, para dotar de una paleta de colores al usuario, asegurándonos que no se repite ninguno al filtrar la lista de colores que se muestra.
 
 \begin{figure}[ht!] % [h!]
   \includegraphics[width=0.90\textwidth]{img/opcionesweb.png}
@@ -852,7 +852,7 @@ También se ha usado el componente q-color, para dotar de una paleta de colores 
   \label{fig:menupersonalizacion}
 \end{figure}
 
-El responsable de departamento, tiene a su dispositición estadísticas de día x usuario, usuario x día, total de días que ha trabajado un usuario y el porcentaje de presencializadad por día. 
+El responsable de departamento, tiene a su disposición estadísticas de día x usuario, usuario x día, total de días que ha trabajado un usuario y el porcentaje de presencializadad por día. 
 
 Para la generación de las gráficas, se ha utlizado Vue-ApexCharts, que es un componente generado en base a la librería Apexcharts, librería que permite generar gráficas en múltiples lenguajes de programación.
 \newpage
@@ -877,12 +877,12 @@ Finalmente se ha desestimado la grabación inmediata al editar un campo, requiri
 % Despliegue
 \chapter{Despliegue}
 
-El despliegue se ha realizado mediante docker-compose (compose file en \url{https://github.com/jrinconm/docker-turnos}) en una instancia de Google Cloud, expuesto a internet en la siguiente dirección:
-\url{http://jrincon.eu}.
+El despliegue se ha realizado mediante docker-compose (compose file en \url{https://github.com/jrinconm/docker-turnos}) en una instancia de Google Cloud, expuesto a Internet en la siguiente dirección:
+\url{http://jrincon.eu}. El usuario para entrar en la aplicación es Pepe, Jose, Josep dependiendo el nivel de acceso, y en los tres caso la contraseña es azul.
 
 \section{Configuración de la instancia}
-En primer lugar, tenemos que entrar en \href{https://console.cloud.google.com/}{Google Cloud} con una cuenta de google, nos pedirá que indiquemos el país de procedencia, y que aceptemos las condiciones del servicio.
-Opcionalmente, también podemos elegir si queremos recibir más comunicaciones por parte de google.
+En primer lugar, tenemos que entrar en \href{https://console.cloud.google.com/}{Google Cloud} con una cuenta de Google, nos pedirá que indiquemos el país de procedencia, y que aceptemos las condiciones del servicio.
+Opcionalmente, también podemos elegir si queremos recibir más comunicaciones por parte de Google.
 
 Para desplegar la aplicación a través de docker-compose, debemos crear una instancia de una máquina virtual, por lo que en el menú lateral seleccionamos "Compute Engine", que por defecto nos envía a instancias de VM.
 El sistema nos pide que creemos un proyecto (si no tenemos ningún otro) y lo nombremos, en mi caso se ha elegido Turnos de Teletrabajo.
@@ -902,7 +902,7 @@ La configuración de la máquina ha sido la más sencilla, e2-micro, con 2 virtu
    \label{fig:cargas}
  \end{figure}
 
- En la selección, es necesario elegir abrir el puerto http, para la aplicación web. Asi mismo, es necesario el acceso a la API, por lo tanto tendremos que abrir en el firewall el puerto 8080. 
+ En la selección, es necesario elegir abrir el puerto http, para la aplicación web. Así mismo, es necesario el acceso a la API, por lo tanto tendremos que abrir en el firewall el puerto 8080. 
  Momentáneamente es necesario abrir el puerto 8000 para phpmyadmin, para crear e importar la base de datos, si no queremos hacerlo por línea de comandos.
 
  Actualmente, en reposo, está consumiendo un 9\% de la cpu, y al estar sin uso, prácticamente no escribe en disco ni genera datos por la red.
@@ -928,7 +928,7 @@ docker run --rm  -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:$PWD"   -
 \end{lstlisting}
 Este comando nos levantara tanto los contenedores de la aplicación, como un contenedor puntual de phpmyadmin para que podamos crear la base de datos, restaurar un backup, o modificar lo que creamos conveniente.
 
-Una vez levantado todo el sistema, sólo nos falta comprobar en el panel, cual es la dirección ip externa, para comprobar que se ha levantado correctamente nuestra aplicación. Esta dirección se puede comprobar directamente en la instacia de la máquina virtual.
+Una vez levantado todo el sistema, sólo nos falta comprobar en el panel, cual es la dirección ip externa, para comprobar que se ha levantado correctamente nuestra aplicación. Esta dirección se puede comprobar directamente en la instancia de la máquina virtual.
 \begin{figure}[h!] % [h!]
   \centering
    \includegraphics[width=0.90\textwidth]{img/ipexterna.png}
@@ -936,32 +936,32 @@ Una vez levantado todo el sistema, sólo nos falta comprobar en el panel, cual e
    \label{fig:ipexterna}
  \end{figure}
 
-Si queremos eliminar los contenedores, primero debemos pararlos de forma individual, o utilizamos el mismo contenedos con docker-compose que hemos usando anteriormente:
+Si queremos eliminar los contenedores, primero debemos pararlos de forma individual, o utilizamos el mismo contenedor con docker-compose que hemos usando anteriormente:
 
 \begin{lstlisting}[language=bash, caption={Comando docker para parar docker-compose}]
 docker run --rm  -v /var/run/docker.sock:/var/run/docker.sock -v "$PWD:$PWD"   -w="$PWD"  docker/compose:1.24.0 down
 \end{lstlisting}
 
-Para eliminar las imagenes que se han descargado del repositorio jrincon, pero no la de mariadb ni las que tiene google cloud asociadas a la instancia, podemos ejecutar el siguiente comando:
+Para eliminar las imágenes que se han descargado del repositorio jrincon, pero no la de mariadb ni las que tiene google cloud asociadas a la instancia, podemos ejecutar el siguiente comando:
 
 \begin{lstlisting}[language=bash, caption={Borrado de imágenes con el texto jrincon}]
   docker images|grep jrincon|awk {'print $3'}|xargs docker image rm
 \end{lstlisting}
 
-En el caso que necesitemos modificar uno de los contenedores, por ejemplo para cambiar las contrañas, sólo tenemos que clonar el respositorio, realizar la edición y dentro del directorio donde está el dockerfile, ejecutar:
+En el caso que necesitemos modificar uno de los contenedores, por ejemplo para cambiar las contraseñas, sólo tenemos que clonar el repositorio, realizar la edición y dentro del directorio donde está el dockerfile, ejecutar:
 
 \begin{lstlisting}[language=bash, caption={Comando docker para construir una imagen}]
   docker build  --pull -f "Dockerfile"  "."
 \end{lstlisting}
 
-Lo podemos compilar y nombrar al mismo tiempo, con el parametro -t para ponerle el tag a la imagen compilada. Una vez compilada, podemos hacerle un push para subir la imagen a nuestro repositorio docker.
+Lo podemos compilar y nombrar al mismo tiempo, con el parámetro -t para ponerle el tag a la imagen compilada. Una vez compilada, podemos hacerle un push para subir la imagen a nuestro repositorio docker.
 
 Para nuestra referencia, en 7 días el crédito no se ha consumido, desde la creación inicial de la instancia:
 
 \begin{figure}[h!] % [h!]
   \centering
    \includegraphics[width=0.20\textwidth]{img/Credito.png}
-   \caption{Crédito restante en google Cloud}
+   \caption{Crédito restante en Google Cloud}
    \label{fig:creditogoogle}
  \end{figure}
 
@@ -985,7 +985,7 @@ Actualmente, Sonarqube le da la máxima calificación a mi código, tanto en bug
 \begin{figure}[h!] % [h!]
   \centering
    \includegraphics[width=0.90\textwidth]{img/estadosonar.png}
-   \caption{Analisis del código por Sonarqube}
+   \caption{Análisis del código por Sonarqube}
    \label{fig:estadosonar}
  \end{figure}
 \clearpage
@@ -1032,11 +1032,11 @@ A continuación muestro una consulta en la que se realiza el signin con usuario 
    \label{fig:postman}
  \end{figure}
 
-Se ha elegido Docker y Docker Compose como entorno de virtualización, y en mi perfil del hub están las imágenes compiladas para poder desplegarlas de forma ŕapida. 
+Se ha elegido Docker y Docker Compose como entorno de virtualización, y en mi perfil del hub están las imágenes compiladas para poder desplegarlas de forma rápida. 
 
 Para la realización de los mockups se ha usado el site \href{https://mockflow.com/app/#Wireframe}{Mockflow}.
 
-En la parte de los diagramas se ha usado el site \href{https://lucid.app/}{Lucid}, que anteriomente se llamaba directamente LucidChart, y Visual Paradigm.
+En la parte de los diagramas se ha usado el site \href{https://lucid.app/}{Lucid}, que anteriormente se llamaba directamente LucidChart, y Visual Paradigm.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                 CONCLUSIONS                                 %
@@ -1052,12 +1052,12 @@ Personalmente, la elección de javascript para el backend, si bien no lo vimos e
 No he necesitado aprender a usar el lenguaje, puesto que ya lo conocía, y sólo he tenido que leer a documentación existente para crear una API sólida, que si bien puede ser mejorable, es suficiente para el uso requerido.
 
 También estoy contento con la elección de sequelize, puesto que al modificar la estructura de la base de datos, sólo tuve que modificar las clases que representan las tablas en la base de datos. 
-Al cambiar también el nombre de los campos (por ejemplo cambié RolId por Rol), tuve que modificar alguna funcion de los controllers que solicitaba expresamente el campo renombrado, pero con sólo buscar el campo y realziar la sustitución fue suficiente.
+Al cambiar también el nombre de los campos (por ejemplo cambié RolId por Rol), tuve que modificar alguna función de los controllers que solicitaba expresamente el campo renombrado, pero con sólo buscar el campo y realizar la sustitución fue suficiente.
 
-Posiblemente, si en el primer análisis se hubieran detectado sólo 2 tablas, habría realizado las consultas a mano, descartando el uso de Sequelize, puesto que posiblemente realizar las consultas puntualmente, hubiera sido más rapido.
+Posiblemente, si en el primer análisis se hubieran detectado sólo 2 tablas, habría realizado las consultas a mano, descartando el uso de Sequelize, puesto que posiblemente realizar las consultas puntualmente, hubiera sido más rápido.
 
 Para comprobar que la API funcionaba correctamente, he realizado un uso intensivo de Postman, que una vez configurado con todas las consultas creadas, de una forma muy rápida pude comprobar que devolvía lo esperado.
-Me ha sido expecialmente útil una vez modificada la base de datos, para comprobar que seguía devolviendo y requiriendo la misma información. 
+Me ha sido especialmente útil una vez modificada la base de datos, para comprobar que seguía devolviendo y requiriendo la misma información. 
 
 En la parte cliente, he descubierto la librería ApexCharts para la generación de gráficas, que me ha parecido muy interesante y cómoda de usar, muy configurable. Me ha parecido mucho más sencilla de usar y mejor documentada que chart.js.
 
@@ -1072,7 +1072,7 @@ Creo que he acertado eligiendo Quasar, según lo he ido usando y descubriendo nu
 La aplicación actualmente es práctica y funcional, sin embargo, hay múltiples funcionalidades que pueden ampliarla y mejorarla. A continuación, expongo una lista.
 
 \begin{itemize}
-  \item Departamentos, subdepartamentos y áreas. Actualmente sólo hay 1 nivel de departamento, en un futuro se podría ampliar a varios niveles, por ejemplo, dentro de logística, podríamos tener compras, almacen, etc.
+  \item Departamentos, subdepartamentos y áreas. Actualmente sólo hay 1 nivel de departamento, en un futuro se podría ampliar a varios niveles, por ejemplo, dentro de logística, podríamos tener compras, almacén, etc.
   \item Documentar la API según la especificación OpenApi e integrar swagger.
   \item Drag and drop de día presencial sobre el de un compañero, para solicitar el cambio de forma automática. 
   \item Creación de un estado "Vacaciones o no disponible" para marcar que una persona no estará presencialmente (ni de forma remota), sin que aparezca en las estadísticas negativamente.
@@ -1124,12 +1124,12 @@ La aplicación actualmente es práctica y funcional, sin embargo, hay múltiples
    \url{https://bezkoder.com/node-js-express-sequelize-mysql}.
 
 \bibitem{WAR}
-   Howto autenticación Vue con Vuex
+   Howto autenticación Vue con Vuex.
    \newblock Consultado en
    \url{https://www.digitalocean.com/community/tutorials/handling-authentication-in-vue-using-vuex}.
 
    \bibitem{WAR}
-   Plantillas Latex TFG etsinf
+   Plantillas Latex TFG etsinf.
    \newblock Consultado en
    \url{https://www.inf.upv.es/www/etsinf/es/plantilla-tfg/}.
 
