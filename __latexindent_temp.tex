@@ -1054,10 +1054,33 @@ No he necesitado aprender a usar el lenguaje, puesto que ya lo conocía, y sólo
 También estoy contento con la elección de sequelize, puesto que al modificar la estructura de la base de datos, sólo tuve que modificar las clases que representan las tablas en la base de datos. 
 Al cambiar también el nombre de los campos (por ejemplo cambié RolId por Rol), tuve que modificar alguna funcion de los controllers que solicitaba expresamente el campo renombrado, pero con sólo buscar el campo y realziar la sustitución fue suficiente.
 
+Posiblemente, si en el primer análisis se hubieran detectado sólo 2 tablas, habría realizado las consultas a mano, descartando el uso de Sequelize, puesto que posiblemente realizar las consultas puntualmente, hubiera sido más rapido.
+
 Para comprobar que la API funcionaba correctamente, he realizado un uso intensivo de Postman, que una vez configurado con todas las consultas creadas, de una forma muy rápida pude comprobar que devolvía lo esperado.
 Me ha sido expecialmente útil una vez modificada la base de datos, para comprobar que seguía devolviendo y requiriendo la misma información. 
 
-En la parte cliente, 
+En la parte cliente, he descubierto la librería ApexCharts para la generación de gráficas, que me ha parecido muy interesante y cómoda de usar, muy configurable. Me ha parecido mucho más sencilla de usar y mejor documentada que chart.js.
+
+Quasar como frontend me pareció muy completo, ya que abarca desde el diseño del interfaz a través de clases de forma similar a bootstrap, hasta componentes muy variados, desde tablas, hasta popups. 
+
+En alguna ocasión he instalado un componente externo, para a los pocos días, darme cuenta que ya tenía incluida de forma nativa un componente con la misma utilidad, por ejemplo Vue Toasted ( componente notify de quasar)  y dialog.
+
+Creo que he acertado eligiendo Quasar, según lo he ido usando y descubriendo nuevas opciones, me ha parecido más facil implementar nuevas funciones. 
+
+\section{Mejoras y ampliaciones del programa}
+
+La aplicación actualmente es práctica y funcional, sin embargo, hay múltiples funcionalidades que pueden ampliarla y mejorarla. A continuación, expongo una lista.
+
+\begin{itemize}
+  \item Departamentos, subdepartamentos y áreas. Actualmente sólo hay 1 nivel de departamento, en un futuro se podría ampliar a varios niveles, por ejemplo, dentro de logística, podríamos tener compras, almacen, etc.
+  \item Documentar la API según la especificación OpenApi e integrar swagger.
+  \item Drag and drop de día presencial sobre el de un compañero, para solicitar el cambio de forma automática. 
+  \item Creación de un estado "Vacaciones o no disponible" para marcar que una persona no estará presencialmente (ni de forma remota), sin que aparezca en las estadísticas negativamente.
+  \item Generar eventos en el calendario del usuario de office 365 (es necesaria una cuenta office 365 y enlazar la cuenta con la aplicación)
+  \item Integrar certificados SSL tanto a la API como al cliente.
+\end{itemize}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                BIBLIOGRAFIA                                 %
