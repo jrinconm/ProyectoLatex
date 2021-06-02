@@ -173,7 +173,7 @@ En el apartado de informes, podremos exportar la información a excel, en format
 
 Por último, el administrador de la aplicación, debe ser capaz de gestionar los usuarios, las altas, bajas, cambios de departamento, etc.
 
-También debería poder visualizar todos los días trabajados, y obtener distintos tipos de informes de ella.
+También debería poder visualizar todos los días trabajados, y obtener distintos tipos de informes de la aplicación.
 
 
 %\section{Notes bibliografiques} %%%%% Opcional
@@ -199,7 +199,9 @@ Al remodelar la base de datos, tan sólo ha sido necesario cambiar las clases af
 
 Se ha usado el cliente API de postman, que permite realizar cualquier tipo de consulta REST, SOAP o GraphQL, permitiendo comprobar de forma visual el objeto json que devuelve una consulta según las rutas que hemos programado.
 
-Se ha integrado CI/CD en la creación de esta documentación, a través de github actions, compilando el documento al realizar un push en el repositorio \url{https://github.com/jrinconm/ProyectoLatex}. Una vez realizada la compilación, nos deja el fichero en el servidor para la descarga.
+Se ha integrado CI/CD en la creación de esta documentación, a través de github actions, compilando el documento al realizar un push en el repositorio:\\ \url{https://github.com/jrinconm/ProyectoLatex}. 
+
+Una vez realizada la compilación, nos deja el fichero en el servidor para la descarga.
 
 El uso de Sonarqube, una plataforma para evaluar el código fuente, ha limitado el código duplicado, llegando a ser inexistente en la parte del frontend.
 
@@ -418,7 +420,7 @@ A partir del análisis de los requisitos, se obtiene el siguiente diseño concep
 
 \begin{figure}[h!] % [h!]
   \centering
-   \includegraphics[scale=0.50]{img/EntidadRelacion.png}
+   \includegraphics[scale=0.45]{img/EntidadRelacion.png}
    \caption{Diagrama E/R}
    \label{fig:diagramaer}
  \end{figure}
@@ -426,7 +428,7 @@ A partir del análisis de los requisitos, se obtiene el siguiente diseño concep
  Finalmente, se ha cambiado el diseño de forma que Tipo y Departamento son atributos de Usuario, creando una única relación entre el usuario y los días que trabaja de forma presencial.
  \begin{figure}[h!] % [h!]
   \centering
-   \includegraphics[scale=0.40]{img/DiagramaERFinal.png}
+   \includegraphics[scale=0.45]{img/DiagramaERFinal.png}
    \caption{Diagrama E/R}
    \label{fig:diagramaerfinal}
  \end{figure}
@@ -459,6 +461,7 @@ Por último, se ha aprovechado también la auto creación de relaciones entre ta
 
 Según el esquema inicial, el diagrama mysql hubiera sido el siguiente:
 \begin{figure}[h!] % [h!]
+  \centering
    \includegraphics[scale=0.40]{img/EsquemaBBDD.png}
    \caption{Diagrama mysql}
    \label{fig:diagramaMysql}
@@ -466,6 +469,7 @@ Según el esquema inicial, el diagrama mysql hubiera sido el siguiente:
 
  Al simplificar la base de datos, y creando una clave primaria numérica id, finalmente se obtiene el siguiente esquema, en el que sólo hay 2 tablas, que se relacionan mediante el id de usuario. 
  \begin{figure}[h!] % [h!]
+  \centering
   \includegraphics[scale=0.40]{img/nuevaBBDD.png}
   \caption{Diagrama mysql final}
   \label{fig:nuevodiagramaMysql}
@@ -921,32 +925,32 @@ La configuración de la máquina ha sido la más sencilla, e2-micro, con 2 virtu
 
  Actualmente, está consumiendo un 9\% - 15\% de la cpu, y al estar casi uso (actualmente testing), prácticamente no escribe en disco ni genera datos por la red.
 
- \begin{figure}[h!] % [h!]
+ \begin{figure}[H] % [h!]
   \centering
    \includegraphics[width=0.90\textwidth]{img/usocpu.png}
    \caption{Carga de la cpu durante un día}
    \label{fig:cargaweb}
  \end{figure}
 
- \begin{figure}[h!] % [h!]
+ \begin{figure}[H] % [h!]
   \centering
    \includegraphics[width=0.90\textwidth]{img/usonet.png}
-   \caption{ancho de banda consumido durante un día}
-   \label{fig:cargaweb}
+   \caption{Ancho de banda consumido durante un día}
+   \label{fig:cargalanweb}
  \end{figure}
 
- \begin{figure}[h!] % [h!]
+ \begin{figure}[H] % [h!]
   \centering
    \includegraphics[width=0.90\textwidth]{img/usodisco.png}
    \caption{Tasa de escritura a disco durante un día}
-   \label{fig:cargaweb}
+   \label{fig:cargawhdweb}
  \end{figure}
 
- \begin{figure}[h!] % [h!]
+ \begin{figure}[H % [h!]
   \centering
    \includegraphics[width=0.90\textwidth]{img/usodiscoread.png}
    \caption{Tasa de lectura de disco durante un día}
-   \label{fig:cargaweb}
+   \label{fig:cargarhdweb}
  \end{figure}
 
 \section{Instalación de los archivos}
@@ -1028,7 +1032,7 @@ Como curiosidad, integra una utilidad para ver como una ciudad el código, siend
 
 \begin{figure}[h!] % [h!]
   \centering
-   \includegraphics[width=0.80\textwidth]{img/calendarioSonarqube.png}
+   \includegraphics[width=0.50\textwidth]{img/calendarioSonarqube.png}
    \caption{Fichero calendario.vue en vista 3d}
    \label{fig:calendariosonar}
  \end{figure}
