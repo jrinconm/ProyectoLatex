@@ -134,7 +134,7 @@ The application can be deployed in Google's cloud, so it can be accessed from an
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Introducci\'on}
-La actual pandemia nos ha cambiado en muchos aspectos en la vida, y uno de ellos ha el teletrabajo. Donde trabajo actualmente, los responsables de cada área rellenamos una hoja excel donde indicamos qué personal va a venir presencialmente a trabajo.
+La actual pandemia nos ha cambiado en muchos aspectos en la vida, y uno de ellos ha sido el teletrabajo. Donde trabajo actualmente, los responsables de cada área rellenamos una hoja excel donde indicamos qué personal va a venir presencialmente a trabajo.
 Es habitual que tengamos que consultar con el personal a nuestro cargo si hay algún cambio, indicar si está todo actualizado. Después nos consultan la fecha en la que nos habían dicho que iban a venir de forma presencial, hay días que se comenten errores. 
 
 Esta situación, me ha hecho darme cuenta que al incorporar el teletrabajo a nuestra forma de vida, muchas empresas que no tenían ningún sistema de turnos porque no les hacía falta, han visto que no disponen de herramientas para coordinar los diversos grupos de trabajo.
@@ -161,11 +161,19 @@ El objetivo de este proyecto es crear una aplicación que de forma rápida permi
 
 También es una utilidad para dotar a los responsables de los departamentos estadísticas del personal a su cargo, para poder revisar los días presenciales, y si es necesario, para que puedan tomar acciones correctivas.
 
+Los responsables de departamento, deberían poder cambiar un día confirmado por uno de sus colaboradores, y ponerlo como provisional de nuevo, o eliminarlo, por ejemplo, en el caso de una ausencia, algún error, etc.
+
+También deberían poder validar una petición de cambio de día del personal de su departamento.
+
 Otro objetivo importante, es que los trabajadores puedan consultar de forma rápida que días marcaron como presenciales, el poder guardarse una copia de los turnos del mes para poder consultarlo con posterioridad.
 
 Aparte, teniendo visibles los turnos de los compañeros, si ya están confirmados los días presenciales, y surge algún imprevisto, pueden hablar directamente con un compañero para pedir cambiar el turno directamente.
 
 En el apartado de informes, podremos exportar la información a excel, en formato de tabla.
+
+Por último, el administrador de la aplicación, debe ser capaz de gestionar los usuarios, las altas, bajas, cambios de departamento, etc.
+
+También debería poder visualizar todos los días trabajados, y obtener distintos tipos de informes de ella.
 
 
 %\section{Notes bibliografiques} %%%%% Opcional
@@ -497,8 +505,8 @@ Se ha usado \LaTeX{} para crear la documentación, que está formado por un gran
 Se Ha elegido \LaTeX{} frente a Word o LibreOffice, ya que se conocía el lenguaje con anterioridad, \LaTeX{} permite automáticamente colorear el código, y la presentación parece más profesional.
 
 \begin{figure}[ht!] % [h!]
-  \includegraphics[width=0.49\textwidth]{img/LatexCode.png}
-  \includegraphics[width=0.49\textwidth]{img/LatexCompilado.png}
+  \includegraphics[width=0.55\textwidth]{img/LatexCode2.png}
+  \includegraphics[width=0.44\textwidth]{img/LatexCompilado.png}
   \caption{Código fuente VS salida compilada}
   \label{fig:Latex}
 \end{figure}
@@ -524,7 +532,8 @@ Se puede usar tanto el docker-compose suministrado como levantar los distintos c
 Se ha usado yaml para el fichero de configuración de docker-compose y las acciones de github, no se ha podido elegir json ni otras alternativas, al ser el formato elegido por docker y github. 
 
 \section{Entorno servidor}
-El código fuente del frontend está alojado en github en la siguiente dirección: \url{https://github.com/jrinconm/TurnosApi}
+El código fuente del frontend está alojado en github en la siguiente dirección: \\
+\url{https://github.com/jrinconm/TurnosApi}
 
 Node.js es un motor de ejecución JavaScript muy ligero, que puede realizar funciones de servidor web. 
 En niveles de carga altos, su rendimiento está por debajo de nginx o apache, pero para las necesidades que tenemos para la API, es rendimiento suficiente y funciona de forma correcta.
@@ -707,7 +716,8 @@ A continuación, un ejemplo de cadena para firmar el token JWT.
   };
 \end{lstlisting}
 \section{Entorno cliente}
-El código fuente del frontend está alojado en github en la siguiente dirección: \url{https://github.com/jrinconm/TurnosFront}
+El código fuente del frontend está alojado en github en la siguiente dirección: \\
+\url{https://github.com/jrinconm/TurnosFront}
 
 Se ha usado el framework Quasar, basado en vue, para crear una SPA. 
 
@@ -844,9 +854,11 @@ Al existir 3 niveles de acceso, actualmente se obtienen 3 posibles renderizados,
 
 En la personalización se ha utilizado el componente q-icon-picker, que nos da acceso a los iconos integrados con quasar, para poder usarlos, en este caso, en la personalización de los usuarios. 
 
-También se ha usado el componente q-color, para dotar de una paleta de colores al usuario, asegurándonos que no se repite ninguno al filtrar la lista de colores que se muestra.
+También se ha usado el componente q-color, para dotar de una paleta de colores al usuario, asegurándonos que no se repite ninguno al filtrar la lista de colores que se muestra. 
+La paleta de colores permitía elegir cualquier color tanto RGB como hexadecimal, se decidió limitar la cantidad de colores para que 2 personas del mismo departamento no pudieran elegir colores que no se pudieran distinguir, por ejemplo los rosas rgb(255,0,254) y rgb(255,0,255).
 
 \begin{figure}[ht!] % [h!]
+  \centering
   \includegraphics[width=0.90\textwidth]{img/opcionesweb.png}
   \caption{Menú de personalización del icono}
   \label{fig:menupersonalizacion}
@@ -858,6 +870,7 @@ Para la generación de las gráficas, se ha utlizado Vue-ApexCharts, que es un c
 \newpage
 
 \begin{figure}[ht!] % [h!]
+  \centering
   \includegraphics[width=0.90\textwidth]{img/informes.png}
   \caption{Menú de informes}
   \label{fig:menuinformes}
@@ -869,6 +882,7 @@ Para generar la tabla, se ha usado el componente qtable, creando el cuerpo de la
 Finalmente se ha desestimado la grabación inmediata al editar un campo, requiriendo que se valide la información mediante el botón Actualizar.
 
 \begin{figure}[ht!] % [h!]
+  \centering
   \includegraphics[width=0.90\textwidth]{img/gestionusuarioweb.png}
   \caption{Tabla de gestión de usuarios}
   \label{fig:gestionusuarios}
@@ -905,12 +919,33 @@ La configuración de la máquina ha sido la más sencilla, e2-micro, con 2 virtu
  En la selección, es necesario elegir abrir el puerto http, para la aplicación web. Así mismo, es necesario el acceso a la API, por lo tanto tendremos que abrir en el firewall el puerto 8080. 
  Momentáneamente es necesario abrir el puerto 8000 para phpmyadmin, para crear e importar la base de datos, si no queremos hacerlo por línea de comandos.
 
- Actualmente, en reposo, está consumiendo un 9\% de la cpu, y al estar sin uso, prácticamente no escribe en disco ni genera datos por la red.
+ Actualmente, está consumiendo un 9\% - 15\% de la cpu, y al estar casi uso (actualmente testing), prácticamente no escribe en disco ni genera datos por la red.
 
  \begin{figure}[h!] % [h!]
   \centering
-   \includegraphics[width=0.90\textwidth]{img/cargaGoogleCloud.png}
-   \caption{Carga durante una hora de la web}
+   \includegraphics[width=0.90\textwidth]{img/usocpu.png}
+   \caption{Carga de la cpu durante un día}
+   \label{fig:cargaweb}
+ \end{figure}
+
+ \begin{figure}[h!] % [h!]
+  \centering
+   \includegraphics[width=0.90\textwidth]{img/usonet.png}
+   \caption{ancho de banda consumido durante un día}
+   \label{fig:cargaweb}
+ \end{figure}
+
+ \begin{figure}[h!] % [h!]
+  \centering
+   \includegraphics[width=0.90\textwidth]{img/usodisco.png}
+   \caption{Tasa de escritura a disco durante un día}
+   \label{fig:cargaweb}
+ \end{figure}
+
+ \begin{figure}[h!] % [h!]
+  \centering
+   \includegraphics[width=0.90\textwidth]{img/usodiscoread.png}
+   \caption{Tasa de lectura de disco durante un día}
    \label{fig:cargaweb}
  \end{figure}
 
@@ -993,7 +1028,7 @@ Como curiosidad, integra una utilidad para ver como una ciudad el código, siend
 
 \begin{figure}[h!] % [h!]
   \centering
-   \includegraphics[width=0.70\textwidth]{img/calendarioSonarqube.png}
+   \includegraphics[width=0.80\textwidth]{img/calendarioSonarqube.png}
    \caption{Fichero calendario.vue en vista 3d}
    \label{fig:calendariosonar}
  \end{figure}
